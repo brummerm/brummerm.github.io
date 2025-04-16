@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Science 101</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #2ecc71;
+            --warning-color: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+        }
+        
+        header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        
+        .course-title {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-subtitle {
+            font-size: 1.2rem;
+            font-weight: normal;
+        }
+        
+        nav {
+            background-color: var(--primary-color);
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            padding: 1rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+        }
+        
+        h2 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+            flex: 1 1 300px;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .card h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            margin-top: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        .contact-info {
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            nav li {
+                padding: 0.5rem;
+            }
+            
+            .course-title {
+                font-size: 1.8rem;
+            }
+            
+            .course-subtitle {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="course-title">Computer Science 101</h1>
+        <p class="course-subtitle">Introduction to Programming and Problem Solving</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="syllabus.html">Syllabus</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="submissions.html">Submit Assignment</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <section>
+            <h2>Welcome to CS101</h2>
+            <p>This course provides an introduction to computer science and programming. You'll learn fundamental programming concepts, problem-solving strategies, and develop skills that will prepare you for more advanced computing courses.</p>
+            
+            <div class="container">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Course Overview</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Learn the basics of programming with Python, understand algorithms, and develop problem-solving skills essential for computer science.</p>
+                        <a href="syllabus.html" class="btn">View Syllabus</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Learning Resources</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Access tutorials, readings, coding exercises, and additional materials to support your learning throughout the course.</p>
+                        <a href="resources.html" class="btn">Browse Resources</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Assignment Submission</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Submit your completed assignments and projects for grading. View feedback and track your progress throughout the semester.</p>
+                        <a href="submissions.html" class="btn">Submit Assignments</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Upcoming Deadlines</h2>
+            <ul>
+                <li><strong>April 20, 2025:</strong> Assignment 3: Functions and Modularity</li>
+                <li><strong>May 1, 2025:</strong> Assignment 4: Data Structures</li>
+                <li><strong>May 15, 2025:</strong> Final Project Proposal</li>
+            </ul>
+        </section>
+        
+        <section>
+            <h2>Announcements</h2>
+            <div style="background-color: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+                <h3>Office Hours Change</h3>
+                <p><strong>Posted: April 16, 2025</strong></p>
+                <p>Office hours for this week will be held online via video conference on Thursday from 3-5 PM instead of the usual Wednesday slot. Please check your email for the meeting link.</p>
+                
+                <hr style="margin: 1.5rem 0; border: 0; border-top: 1px solid #eee;">
+                
+                <h3>Additional Python Resources Added</h3>
+                <p><strong>Posted: April 10, 2025</strong></p>
+                <p>New Python tutorials focusing on data structures have been added to the Resources section. These supplementary materials will help with the upcoming Assignment 4.</p>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="contact-info">
+            <p>Instructor: Professor Name</p>
+            <p>Email: professor@university.edu</p>
+            <p>Office Hours: Monday & Wednesday, 2-4 PM</p>
+        </div>
+        <p>&copy; 2025 Computer Science Department</p>
+    </footer>
+</body>
+</html>
