@@ -307,8 +307,8 @@
             margin-right: auto; 
             margin-left: 0; 
             float: left; 
-            max-width: 50px; 
-            height: 50px; 
+            max-width: 90px; 
+            height: 90px; 
         }
         @media (max-width: 768px) {
             nav ul {
@@ -426,6 +426,9 @@
         // Show home section by default
         document.getElementById('home').classList.remove('section-hidden');
         
+        document.querySelector('.nav-link[data-section="home"]').classList.add('active');
+        sections.forEach(section => section.classList.add('section-hidden'));
+
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
