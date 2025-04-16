@@ -93,9 +93,18 @@
         }
         
         .container {
-            display: flex;
-            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            width: 100%;
+        }
+
+        .header-content {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            align-items: center;
             gap: 2rem;
+            width: 100%;
         }
         
         .card {
@@ -303,7 +312,7 @@
             text-decoration: none;
         }
         .logo {
-            display: block;
+            display: flex;
             margin-right: auto; 
             margin-left: 0; 
             float: left; 
@@ -332,7 +341,9 @@
 </head>
 <body>
     <header>
-        <img class="logo" src="brummerm.github.io/Images/logo.png" alt="logo">
+        <div class="logo">
+            <img src="brummerm.github.io/Images/logo.png" alt="logo">
+        </div>
         <h1>Computer Science</h1>
         <p class="course-subtitle">Introduction to Programming and Technology</p>
     </header>
