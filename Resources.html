@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Science Class Resources</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-color);
+        }
+        
+        header {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .course-title {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-subtitle {
+            font-size: 1.2rem;
+            font-weight: normal;
+        }
+        
+        nav {
+            background-color: var(--primary-color);
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            padding: 1rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+        }
+        
+        h2 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark-color);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-btn.active {
+            color: var(--secondary-color);
+        }
+        
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .card h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 2px solid var(--light-color);
+            padding-bottom: 10px;
+        }
+        
+        .resource-link {
+            display: block;
+            padding: 8px 0;
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .resource-link:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+        
+        .resource-link i {
+            margin-right: 8px;
+        }
+        
+        .resource-meta {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 4px;
+        }
+        
+        .search-bar {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .search-bar input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+            font-size: 16px;
+        }
+        
+        .search-bar button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .search-bar button:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .tag {
+            display: inline-block;
+            background-color: var(--light-color);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            margin-right: 5px;
+            margin-top: 5px;
+            color: var(--dark-color);
+        }
+        
+        .accordion {
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .accordion-header {
+            padding: 15px 20px;
+            background-color: var(--light-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .accordion-header:hover {
+            background-color: #dde4e6;
+        }
+        
+        .accordion-header h3 {
+            margin: 0;
+            font-size: 18px;
+            color: var(--primary-color);
+        }
+        
+        .accordion-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .accordion.active .accordion-content {
+            max-height: 500px;
+            padding: 20px;
+        }
+        
+        .recommended-badge {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.75em;
+            margin-left: 10px;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab-btn {
+                width: 100%;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+            
+            .tab-btn.active::after {
+                display: none;
+            }
+            
+            .search-bar {
+                flex-direction: column;
+            }
+            
+            .search-bar input,
+            .search-bar button {
+                width: 100%;
+                border-radius: 4px;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="course-title">Computer Science</h1>
+        <p class="course-subtitle">Introduction to Programming and Technology</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="Home.html" class="home-btn">Home</a></li>
+            <li><a href="Syllabus.html" class="syllabus-btn">Syllabus</a></li>
+            <li><a href="Resources.html" class="resources-btn">Resources</a></li>
+            <li><a href="submitwork.html" class="submitwork-btn">Submit an Assignment</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="search-bar">
+            <input type="text" placeholder="Search resources...">
+            <button>Search</button>
+        </div>
+        
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="textbooks">Support Materials</button>
+            <button class="tab-btn" data-tab="lectures">Lecture Materials</button>
+            <button class="tab-btn" data-tab="assignments">Assignments</button>
+            <button class="tab-btn" data-tab="tools">Tools & Software</button>
+            <button class="tab-btn" data-tab="help">Help & Support</button>
+        </div>
+        
+        <!-- Textbooks Tab -->
+        <div id="textbooks" class="tab-content active">
+            <div class="card">
+                <h2>Python</h2>
+            <h3>Online Courses and Videos</h3>
+        <ul>
+            <li><a href="https://www.edx.org/course/cs50s-introduction-to-programming-with-python"><strong>CS50's Introduction to Programming with Python</strong></a> - Harvard's introduction course</li>
+            <li><a href="https://www.coursera.org/specializations/python"><strong>Python for Everybody</strong></a> by Dr. Charles Severance on Coursera</li>
+            <li><a href="https://www.youtube.com/user/schafer5"><strong>Corey Schafer's Python Tutorials</strong></a> - Excellent YouTube series covering Python fundamentals to advanced topics</li>
+            <li><a href="https://www.youtube.com/playlist?list=PLi01XoE8jYohWFPpC17Z-wWhPOSuh8Er-"><strong>Socratica's Python Programming Tutorials</strong></a> - Clear, concise tutorials</li>
+            <li><a href="https://realpython.com/"><strong>Real Python</strong></a> - Website with extensive tutorials and videos</li>
+        </ul>
+
+        <h3>Interactive Learning Platforms</h3>
+        <ul>
+            <li><a href="https://www.codecademy.com/learn/learn-python-3"><strong>Codecademy Python Track</strong></a> - Interactive lessons</li>
+            <li><a href="https://leetcode.com/problemset/"><strong>LeetCode Python Problems</strong></a> - For programming practice</li>
+            <li><a href="https://exercism.io/tracks/python"><strong>Exercism.io</strong></a> - Mentored programming challenges</li>
+            <li><a href="https://www.kaggle.com/learn/python"><strong>Kaggle Python Courses</strong></a> - Data-focused Python training</li>
+        </ul>
+        </div>
+    </div>
+
+    <div id="textbooks" class="tab-content active">
+        <div class="card">
+        <h2>HTML and Web Development Resources</h2>
+
+        <h3>Online Courses and Videos</h3>
+        <ul>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML"><strong>MDN Web Docs: HTML Basics</strong></a> - Industry-standard reference</li>
+            <li><a href="https://www.freecodecamp.org/learn"><strong>freeCodeCamp's Responsive Web Design Certification</strong></a> - Comprehensive free curriculum</li>
+            <li><a href="https://www.youtube.com/watch?v=UB1O30fR-EE"><strong>Traversy Media HTML Crash Course</strong></a> - Excellent introduction</li>
+            <li><a href="https://www.youtube.com/playlist?list=PL4cUxeGkcC9ivBf_eKCPIAYXWzLlPAm6G"><strong>Net Ninja HTML & CSS Playlist</strong></a> - Step-by-step tutorials</li>
+            <li><a href="https://www.udacity.com/course/intro-to-html-and-css--ud001"><strong>Udacity's Intro to HTML and CSS</strong></a> - Free foundational course</li>
+        </ul>
+
+        <h3>Interactive Learning Platforms</h3>
+        <ul>
+            <li><a href="https://www.w3schools.com/html/"><strong>W3Schools HTML Tutorial</strong></a> - Interactive examples and testing environment</li>
+            <li><a href="https://www.khanacademy.org/computing/computer-programming/html-css"><strong>Khan Academy HTML/CSS Course</strong></a> - Guided lessons with exercises</li>
+            <li><a href="https://www.codecademy.com/learn/learn-html"><strong>Codecademy HTML Course</strong></a> - Interactive learning</li>
+        </ul>
+    </div>
+</div>
+
+<div id="textbooks" class="tab-content active">
+    <div class="card">
+        <h2>Circuit Design Resources</h2>
+        
+
+        <h3>Online Courses and Videos</h3>
+        <ul>
+            <li><a href="https://www.khanacademy.org/science/electrical-engineering"><strong>Khan Academy Electrical Engineering</strong></a> - Foundational concepts</li>
+            <li><a href="https://www.allaboutcircuits.com/education/"><strong>All About Circuits Tutorials</strong></a> - Free online textbook and resources</li>
+            <li><a href="https://www.youtube.com/user/eaterbc"><strong>Ben Eater's Digital Electronics Videos</strong></a> - Detailed explanations of digital logic</li>
+            <li><a href="https://www.circuitbasics.com/"><strong>Circuit Basics Tutorials</strong></a> - Practical projects and explanations</li>
+            <li><a href="https://www.youtube.com/user/greatscottlab"><strong>GreatScott! YouTube Channel</strong></a> - DIY electronics projects</li>
+        </ul>
+
+        <h3>Interactive Learning Platforms</h3>
+        <ul>
+            <li><a href="https://www.tinkercad.com/circuits"><strong>TinkerCAD Circuits</strong></a> - Browser-based circuit simulation</li>
+            <li><a href="https://www.falstad.com/circuit/"><strong>Falstad Circuit Simulator</strong></a> - Interactive circuit visualization</li>
+            <li><a href="https://learn.sparkfun.com/"><strong>SparkFun Learn</strong></a> - Project-based tutorials</li>
+            <li><a href="https://learn.adafruit.com/"><strong>Adafruit Learning System</strong></a> - Tutorials and projects</li>
+        </ul>
+    </div>
+</div>
+
+<div id="textbooks" class="tab-content active">
+    <div class="card">
+        <h2>Cryptography Resources</h2>
+        
+
+        <h3>Online Courses and Videos</h3>
+        <ul>
+            <li><a href="https://www.coursera.org/learn/crypto"><strong>Cryptography I by Stanford University</strong></a> on Coursera</li>
+            <li><a href="https://www.youtube.com/channel/UC1usFRN4LCMcfIV7UjHNuQg/videos"><strong>Introduction to Cryptography by Christof Paar</strong></a> - University lecture series</li>
+            <li><a href="https://www.khanacademy.org/computing/computer-science/cryptography"><strong>Khan Academy Cryptography</strong></a> - Basics explained well</li>
+            <li><a href="https://www.youtube.com/user/Computerphile"><strong>Computerphile Cryptography Videos</strong></a> - Clear explanations of complex topics</li>
+            <li><a href="https://www.youtube.com/channel/UClcE-kVhqyiHCcjYwcpfj9w"><strong>LiveOverflow's Security Videos</strong></a> - Application of cryptography in security</li>
+        </ul>
+
+        <h3>Interactive Learning Platforms</h3>
+        <ul>
+            <li><a href="https://www.cryptool.org/"><strong>CrypTool</strong></a> - Educational tools for cryptography</li>
+            <li><a href="https://cryptohack.org/"><strong>Cryptohack</strong></a> - Learning platform with cryptography challenges</li>
+            <li><a href="https://cryptopals.com/"><strong>CryptoPals Crypto Challenges</strong></a> - Programming challenges for cryptography</li>
+            <li><a href="https://tryhackme.com/"><strong>TryHackMe Crypto Rooms</strong></a> - Applied cryptography in cybersecurity context</li>
+        </ul>
+    </div>
+</div>
+
+<div id="textbooks" class="tab-content active">
+    <div class="card">
+        <h2>3D Modeling and Printing Resources</h2>
+        
+
+        <h3>Online Courses and Videos</h3>
+        <ul>
+            <li><a href="https://www.youtube.com/playlist?list=PLjEaoINr3zgEq0u2MzVgAaHEBt--xLB6U"><strong>Blender Guru's Donut Tutorial Series</strong></a> - Classic beginner introduction</li>
+            <li><a href="https://www.youtube.com/user/BlenderFoundation"><strong>Blender Foundation's Official Tutorials</strong></a> - Comprehensive coverage</li>
+            <li><a href="https://www.youtube.com/user/TheMakersMuse"><strong>Maker's Muse YouTube Channel</strong></a> - 3D printing techniques and tips</li>
+            <li><a href="https://cgcookie.com/courses/topic:blender"><strong>CG Cookie Blender Courses</strong></a> - Structured learning</li>
+            <li><a href="https://www.youtube.com/channel/UC_7aK9PpYTqt08ERh1MewlQ"><strong>3D Printing Nerd</strong></a> - Hardware reviews and printing techniques</li>
+        </ul>
+
+        <h3>Interactive Learning Platforms</h3>
+        <ul>
+            <li><a href="https://www.thingiverse.com/"><strong>Thingiverse</strong></a> - Repository of 3D models and community</li>
+            <li><a href="https://www.printables.com/"><strong>Printables</strong></a> - Project repository with guides</li>
+            <li><a href="https://cloud.blender.org/"><strong>Blender Cloud</strong></a> - Official Blender Foundation training</li>
+            <li><a href="https://www.sculptfab.com/"><strong>Sculptfab</strong></a> - Browser-based 3D sculpting practice</li>
+        </ul>
+    </div>
+</div>
+
+<div id="textbooks" class="tab-content active">
+    <div class="card">
+        <h2>Computer Repair and Maintenance Resources</h2>
+        
+
+        <h3>Online Courses and Videos</h3>
+        <ul>
+            <li><a href="https://www.professormesser.com/free-a-plus-training/a-plus-videos/"><strong>Professor Messer's CompTIA A+ Videos</strong></a> - Free comprehensive training</li>
+            <li><a href="https://www.youtube.com/user/elithecomputerguy"><strong>Eli the Computer Guy</strong></a> - Practical IT and repair tutorials</li>
+            <li><a href="https://www.youtube.com/user/CareyHolzman"><strong>Carey Holzman's YouTube Channel</strong></a> - PC building and troubleshooting</li>
+            <li><a href="https://www.youtube.com/user/LinusTechTips"><strong>Linus Tech Tips</strong></a> - Hardware reviews and build guides</li>
+            <li><a href="https://www.youtube.com/user/Jayztwocents"><strong>JayzTwoCents</strong></a> - PC building and optimization techniques</li>
+        </ul>
+
+        <h3>Interactive Learning Platforms</h3>
+        <ul>
+            <li><a href="https://www.ifixit.com/Guide"><strong>iFixit Repair Guides</strong></a> - Detailed teardown and repair instructions</li>
+            <li><a href="https://store.steampowered.com/app/621060/PC_Building_Simulator/"><strong>PC Building Simulator</strong></a> - Virtual practice environment</li>
+            <li><a href="https://w3.testout.com/courses/pc-pro"><strong>TestOut PC Pro</strong></a> - Simulation-based IT training</li>
+            <li><a href="https://edu.gcfglobal.org/en/topics/computerbasics/"><strong>GCFLearnFree Computer Basics</strong></a> - Foundational knowledge</li>
+        </ul>
+    </div>
+</div>
+            
+        
+        <!-- Lecture Materials Tab -->
+        <div id="lectures" class="tab-content">
+            <div class="card">
+                <h3>Lecture Slides & Notes</h3>
+                <a href="#" class="resource-link">
+                    <i>📝</i> Week 1: Introduction to Data Structures
+                    <div class="resource-meta">
+                        <span class="tag">PDF</span> <span class="tag">Slides</span> <span class="tag">Notes</span>
+                    </div>
+                </a>
+                <a href="#" class="resource-link">
+                    <i>📝</i> Week 2: Arrays and Linked Lists
+                    <div class="resource-meta">
+                        <span class="tag">PDF</span> <span class="tag">Slides</span> <span class="tag">Notes</span>
+                    </div>
+                </a>
+                <a href="#" class="resource-link">
+                    <i>📝</i> Week 3: Stacks and Queues
+                    <div class="resource-meta">
+                        <span class="tag">PDF</span> <span class="tag">Slides</span> <span class="tag">Notes</span>
+                    </div>
+                </a>
+                <a href="#" class="resource-link">
+                    <i>📝</i> Week 4: Trees and Binary Search Trees
+                    <div class="resource-meta">
+                        <span class="tag">PDF</span> <span class="tag">Slides</span> <span class="tag">Notes</span>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="card">
+                <h3>Supplementary Videos</h3>
+                <a href="#" class="resource-link">
+                    <i>🎬</i> Visualization of Sorting Algorithms
+                    <div class="resource-meta">
+                        Duration: 45:20 | <span class="tag">External Resource</span>
+                    </div>
+                </a>
+                <a href="#" class="resource-link">
+                    <i>🎬</i> Tree Traversal Techniques Explained
+                    <div class="resource-meta">
+                        Duration: 32:10 | <span class="tag">External Resource</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Assignments Tab -->
+        <div id="assignments" class="tab-content">
+            <div class="accordion">
+                <div class="accordion-header">
+                    <h3>Assignment 1: Algorithm Analysis <span class="recommended-badge">Current</span></h3>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Due Date:</strong> September 18, 2024, 11:59 PM</p>
+                    <p><strong>Description:</strong> Analyze the time and space complexity of given algorithms and provide Big O notation for each.</p>
+                    <p><strong>Files:</strong></p>
+                    <ul>
+                        <li><a href="#">Assignment 1 PDF</a></li>
+                        <li><a href="#">Starter Code (Python)</a></li>
+                        <li><a href="#">Submission Template</a></li>
+                    </ul>
+                    <p><strong>Submission:</strong> Submit through the course management system.</p>
+                </div>
+            </div>
+            
+            <div class="accordion">
+                <div class="accordion-header">
+                    <h3>Assignment 2: Linked Structures</h3>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Due Date:</strong> October 2, 2024, 11:59 PM</p>
+                    <p><strong>Description:</strong> Implement and test various linked data structures including singly linked lists, doubly linked lists, and circular linked lists.</p>
+                    <p><strong>Files:</strong></p>
+                    <ul>
+                        <li><a href="#">Assignment 2 PDF</a></li>
+                        <li><a href="#">Starter Code (Python)</a></li>
+                        <li><a href="#">Test Cases</a></li>
+                    </ul>
+                    <p><strong>Submission:</strong> Submit through the course management system.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tools & Software Tab -->
+        <div id="tools" class="tab-content">
+            <div class="card">
+                <h3>Required Software</h3>
+                <a href="#" class="resource-link">
+                    <i>💻</i> Python 3.10+ (Anaconda Distribution Recommended)
+                    <div class="resource-meta">
+                        <span class="tag">Free</span> <span class="tag">Installation Guide</span>
+                    </div>
+                </a>
+                <a href="#" class="resource-link">
+                    <i>💻</i> Visual Studio Code or PyCharm
+                    <div class="resource-meta">
+                        <span class="tag">IDE</span> <span class="tag">Setup Tutorial Available</span>
+                    </div>
+                </a>
+                <a href="#" class="resource-link">
+                    <i>💻</i> Git & GitHub Account
+                    <div class="resource-meta">
+                        <span class="tag">Version Control</span> <span class="tag">Tutorial</span>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="card">
+                <h3>Online Tools</h3>
+                <a href="#" class="resource-link">
+                    <i>🌐</i> Replit.com (Online Python IDE)
+                    <div class="resource-meta">
+                        <span class="tag">Browser-based</span> <span class="tag">Collaboration</span>
+                    </div>
+                </a>
+                <a href="#" class="resource-link">
+                    <i>🌐</i> Algorithm Visualizer
+                    <div class="resource-meta">
+                        <span class="tag">Interactive</span> <span class="tag">Educational</span>
+                    </div>
+                </a>
+                <a href="#" class="resource-link">
+                    <i>🌐</i> LeetCode/HackerRank
+                    <div class="resource-meta">
+                        <span class="tag">Practice</span> <span class="tag">Challenges</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Help & Support Tab -->
+        <div id="help" class="tab-content">
+            <div class="card">
+                <h3>Office Hours</h3>
+                <a href="#" class="resource-link">
+                    <i>👨‍🏫</i> Mr. Brummer
+                    <div class="resource-meta">
+                        Monday & Wednesday, 12:20-1:00 PM | Location: Room 505
+                    </div>
+                </a>
+            </div>
+            
+            <div class="card">
+                <h3>Teaching Assistants</h3>
+                <a href="#" class="resource-link">
+                    <i>👨‍🎓</i> TA Name
+                    <div class="resource-meta">
+                        text
+                    </div>
+                </a>
+                <a href="#" class="resource-link">
+                    <i>👩‍🎓</i> TA Name
+                    <div class="resource-meta">
+                        text
+                    </div>
+                </a>
+                <a href="#" class="resource-link">
+                    <i>👨‍🎓</i> TA Name
+                    <div class="resource-meta">
+                        text
+                    </div>
+                </a>
+            </div>
+            
+            <div class="card">
+                <h3>Additional Support</h3>
+                <a href="#" class="resource-link">
+                    <i>📧</i> Email Support
+                    <div class="resource-meta">
+                        mbrummer@schools.nyc.gov | Response within 24 hours
+                    </div>
+                </a>
+                <a href="#" class="resource-link">
+                    <i>🏫</i> Computer Science Peer Tutoring
+                    <div class="resource-meta">
+                        Mon,Tues,Thurs, 3:30 PM-4:30 PM | Location: Room 130
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="contact-info">
+            <p>Instructor: Mr. Brummer</p>
+            <p>Email: mbrummer@schools.nyc.gov</p>
+            <p>Office Hours: ---</p>
+        </div>
+        <p>&copy; 2025 Computer Science</p>
+    </footer>
+    
+    <script>
+        // Tab switching functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons and contents
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked button and corresponding content
+                    button.classList.add('active');
+                    const tabId = button.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Accordion functionality
+            const accordions = document.querySelectorAll('.accordion');
+            accordions.forEach(accordion => {
+                const header = accordion.querySelector('.accordion-header');
+                header.addEventListener('click', () => {
+                    accordion.classList.toggle('active');
+                    const indicator = header.querySelector('span');
+                    indicator.textContent = accordion.classList.contains('active') ? '-' : '+';
+                });
+            });
+            
+            // Search functionality
+            const searchInput = document.querySelector('.search-bar input');
+            const searchButton = document.querySelector('.search-bar button');
+            const resourceLinks = document.querySelectorAll('.resource-link');
+            
+            function performSearch() {
+                const searchTerm = searchInput.value.toLowerCase();
+                resourceLinks.forEach(link => {
+                    const text = link.textContent.toLowerCase();
+                    const parent = link.closest('.card') || link.closest('.accordion');
+                    
+                    if (text.includes(searchTerm)) {
+                        link.style.display = 'block';
+                        if (parent) {
+                            parent.style.display = 'block';
+                        }
+                    } else {
+                        link.style.display = 'none';
+                        
+                        // Check if all links in this card/accordion are hidden
+                        const siblings = Array.from(parent.querySelectorAll('.resource-link'));
+                        const allHidden = siblings.every(sib => sib.style.display === 'none');
+                        
+                        if (allHidden) {
+                            parent.style.display = 'none';
+                        }
+                    }
+                });
+            }
+            
+            searchButton.addEventListener('click', performSearch);
+            searchInput.addEventListener('keyup', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
