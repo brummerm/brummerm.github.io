@@ -223,163 +223,243 @@
         .reset-btn:hover {
             background-color: #7f8c8d;
         }
-        
-        .submit-btn {
-            background-color: var(--accent-color);
-        }
-        
-        .submit-btn:hover {
-            background-color: #c0392b;
-        }
-        
-        .section-hidden {
-            display: none;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .form-group input[type="text"],
-        .form-group input[type="date"],
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-            font-family: inherit;
-        }
-        
-        .form-group input[type="file"] {
-            padding: 0.5rem 0;
-        }
-        
-        .file-instructions {
-            font-size: 0.85rem;
-            color: #777;
-            margin-top: 0.5rem;
-        }
-        
-        .checkbox-group {
+        .hero {
             display: flex;
-            align-items: flex-start;
-        }
-        
-        .checkbox-group input {
-            margin-top: 0.3rem;
-            margin-right: 0.5rem;
-        }
-        
-        .form-actions {
-            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             gap: 1rem;
-            margin-top: 2rem;
         }
         
-        .submission-form {
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+        }
+        
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            padding: 1rem;
             background-color: white;
-            padding: 2rem;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         
-        .submission-history {
-            margin-bottom: 2rem;
+        .filter-option {
+            padding: 0.5rem 1rem;
+            background-color: #e0e0e0;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
         
-        .submission-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
+        .filter-option:hover {
+            background-color: #d0d0d0;
         }
         
-        .submission-table th,
-        .submission-table td {
-            padding: 0.75rem 1rem;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .submission-table th {
+        .filter-option.active {
             background-color: var(--primary-color);
             color: white;
-            font-weight: 500;
         }
         
-        .submission-table tr:nth-child(even) {
-            background-color: rgba(0, 0, 0, 0.02);
+        .search-box {
+            display: flex;
+            width: 100%;
+            max-width: 400px;
+            margin: 1rem auto;
         }
         
-        .status-graded {
-            color: var(--success-color);
-            font-weight: 500;
+        .search-box input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
         }
         
-        .status-pending {
-            color: var(--warning-color);
-            font-weight: 500;
-        }
-        
-        .submission-guidelines {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .submission-guidelines ul {
-            margin-left: 1.5rem;
-            margin-top: 0.5rem;
-        }
-        
-        .submission-guidelines li {
-            margin-bottom: 0.5rem;
-        }
-
-        footer {
-            background-color: var(--secondary-color);
+        .search-box button {
+            padding: 0.75rem 1rem;
+            background-color: var(--primary-color);
             color: white;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 2rem;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
         }
         
-        .contact-info {
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .project-category {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        
+        .project-info {
+            padding: 1.5rem;
+        }
+        
+        .project-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .project-student {
+            font-size: 0.9rem;
+            color: #666;
             margin-bottom: 1rem;
         }
         
-        .social-links a {
+        .project-description {
+            font-size: 0.95rem;
+            color: #444;
+            margin-bottom: 1rem;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .tag {
+            background-color: #f0f0f0;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .project-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .project-view {
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-color);
             color: white;
-            margin: 0 0.5rem;
-            font-size: 1.2rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .project-like {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            background: none;
+            border: none;
+            color: #666;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+            display: none;
+        }
+        
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .footer-links a {
+            color: var(--text-light);
             text-decoration: none;
         }
         
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
         @media (max-width: 768px) {
-            nav ul {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+            
+            .filter-bar {
                 flex-direction: column;
-                width: 100%;
-            }
-            
-            nav li {
-                padding: 0.5rem;
-            }
-            
-            .course-title {
-                font-size: 1.8rem;
-            }
-            
-            .course-subtitle {
-                font-size: 1rem;
+                align-items: center;
             }
         }
     </style>
@@ -401,12 +481,30 @@
         </ul>
     </nav>
 
-<main>
-    <h2>Assignment Submission</h2>
-    <p>Use this form to submit your assignments for grading. Be sure to include all required files and documentation.</p>
-    
-    
-</main>
+    <main class="container">
+        <div class="filter-bar">
+            <div class="filter-option active" data-category="all">All Projects</div>
+            <div class="filter-option" data-category="design">Graphic Design</div>
+            <div class="filter-option" data-category="web">Web Development</div>
+            <div class="filter-option" data-category="art">Digital Art</div>
+            <div class="filter-option" data-category="photography">Photography</div>
+            <div class="filter-option" data-category="video">Video Production</div>
+        </div>
+        
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="Search projects...">
+            <button id="search-button">Search</button>
+        </div>
+        
+        <div class="projects-grid" id="projects-container">
+            <!-- Project cards will be dynamically loaded here -->
+        </div>
+        
+        <div class="empty-state" id="empty-state">
+            <h3>No projects found</h3>
+            <p>Try adjusting your filters or search criteria</p>
+        </div>
+    </main>
     
 <footer>
     <div class="contact-info">
@@ -418,34 +516,251 @@
 </footer>
 
 <script>
-    // Navigation functionality
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('section');
-    
-    // Show home section by default
-    document.getElementById('home').classList.remove('section-hidden');
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            
-            // Remove active class from all links
-            navLinks.forEach(link => link.classList.remove('active'));
-            
-            // Add active class to clicked link
-            link.classList.add('active');
-            
-            // Hide all sections
-            sections.forEach(section => section.classList.add('section-hidden'));
-            
-            // Show corresponding section
-            const sectionId = link.getAttribute('data-section');
-            document.getElementById(sectionId).classList.remove('section-hidden');
-            
-            // Scroll to top
-            window.scrollTo(0, 0);
-        });
+    // Sample project data
+    const projectsData = [
+        {
+            id: 1,
+            title: "Typographic Poster Series",
+            student: "Emma Johnson",
+            description: "A series of typographic posters exploring visual hierarchy and composition with expressive typography.",
+            category: "design",
+            image: "/api/placeholder/400/320",
+            tags: ["Typography", "Poster Design", "Print"],
+            likes: 24
+        },
+        {
+            id: 2,
+            title: "E-commerce Website",
+            student: "Michael Chen",
+            description: "Fully responsive e-commerce website with shopping cart functionality built with HTML, CSS, and JavaScript.",
+            category: "web",
+            image: "/api/placeholder/400/320",
+            tags: ["HTML/CSS", "JavaScript", "UI/UX"],
+            likes: 36
+        },
+        {
+            id: 3,
+            title: "Digital Portrait Series",
+            student: "Sophia Martinez",
+            description: "A collection of digital portraits exploring different artistic styles and color theories.",
+            category: "art",
+            image: "/api/placeholder/400/320",
+            tags: ["Digital Art", "Portraits", "Illustration"],
+            likes: 42
+        },
+        {
+            id: 4,
+            title: "Urban Landscape Photography",
+            student: "James Wilson",
+            description: "A photography series capturing the interplay of light and shadow in urban environments.",
+            category: "photography",
+            image: "/api/placeholder/400/320",
+            tags: ["Photography", "Urban", "Composition"],
+            likes: 18
+        },
+        {
+            id: 5,
+            title: "Short Documentary Film",
+            student: "Ava Thompson",
+            description: "A 10-minute documentary exploring local artisans and their traditional crafting methods.",
+            category: "video",
+            image: "/api/placeholder/400/320",
+            tags: ["Video", "Documentary", "Storytelling"],
+            likes: 29
+        },
+        {
+            id: 6,
+            title: "Interactive Data Visualization",
+            student: "Ethan Brown",
+            description: "Interactive web-based data visualization project demonstrating climate change impacts.",
+            category: "web",
+            image: "/api/placeholder/400/320",
+            tags: ["Data Viz", "JavaScript", "SVG"],
+            likes: 31
+        },
+        {
+            id: 7,
+            title: "Brand Identity System",
+            student: "Olivia Garcia",
+            description: "Complete brand identity system for a fictional sustainable fashion company.",
+            category: "design",
+            image: "/api/placeholder/400/320",
+            tags: ["Branding", "Logo Design", "Identity"],
+            likes: 27
+        },
+        {
+            id: 8,
+            title: "Wildlife Photography Collection",
+            student: "Noah Taylor",
+            description: "A series of wildlife photographs taken during a field study in national parks.",
+            category: "photography",
+            image: "/api/placeholder/400/320",
+            tags: ["Photography", "Wildlife", "Nature"],
+            likes: 39
+        },
+        {
+            id: 9,
+            title: "Animated Short Film",
+            student: "Isabella Moore",
+            description: "A 3-minute animated short exploring themes of connection and isolation.",
+            category: "video",
+            image: "/api/placeholder/400/320",
+            tags: ["Animation", "Storytelling", "2D"],
+            likes: 45
+        },
+        {
+            id: 10,
+            title: "Fantasy Character Illustrations",
+            student: "Lucas Davis",
+            description: "A series of detailed digital illustrations depicting original fantasy characters.",
+            category: "art",
+            image: "/api/placeholder/400/320",
+            tags: ["Illustration", "Character Design", "Fantasy"],
+            likes: 33
+        },
+        {
+            id: 11,
+            title: "Mobile App UI/UX Design",
+            student: "Mia Rodriguez",
+            description: "Comprehensive UI/UX design for a health and wellness mobile application.",
+            category: "design",
+            image: "/api/placeholder/400/320",
+            tags: ["UI/UX", "Mobile", "App Design"],
+            likes: 22
+        },
+        {
+            id: 12,
+            title: "Portfolio Website",
+            student: "Alexander Wright",
+            description: "Personal portfolio website showcasing web development and design projects.",
+            category: "web",
+            image: "/api/placeholder/400/320",
+            tags: ["Portfolio", "Web Design", "Responsive"],
+            likes: 25
+        }
+    ];
+
+    // DOM Elements
+    const projectsContainer = document.getElementById('projects-container');
+    const filterOptions = document.querySelectorAll('.filter-option');
+    const searchInput = document.getElementById('search-input');
+    const searchButton = document.getElementById('search-button');
+    const emptyState = document.getElementById('empty-state');
+
+    // Current filter and search state
+    let currentCategory = 'all';
+    let searchQuery = '';
+
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', () => {
+        renderProjects();
+        setupEventListeners();
     });
+
+    // Set up event listeners
+    function setupEventListeners() {
+        // Filter options
+        filterOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                filterOptions.forEach(opt => opt.classList.remove('active'));
+                option.classList.add('active');
+                currentCategory = option.getAttribute('data-category');
+                renderProjects();
+            });
+        });
+
+        // Search functionality
+        searchButton.addEventListener('click', () => {
+            searchQuery = searchInput.value.trim().toLowerCase();
+            renderProjects();
+        });
+
+        searchInput.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') {
+                searchQuery = searchInput.value.trim().toLowerCase();
+                renderProjects();
+            }
+        });
+    }
+
+    // Render projects based on current filters
+    function renderProjects() {
+        projectsContainer.innerHTML = '';
+        
+        const filteredProjects = projectsData.filter(project => {
+            const matchesCategory = currentCategory === 'all' || project.category === currentCategory;
+            const matchesSearch = searchQuery === '' || 
+                                 project.title.toLowerCase().includes(searchQuery) ||
+                                 project.student.toLowerCase().includes(searchQuery) ||
+                                 project.description.toLowerCase().includes(searchQuery) ||
+                                 project.tags.some(tag => tag.toLowerCase().includes(searchQuery));
+            
+            return matchesCategory && matchesSearch;
+        });
+        
+        if (filteredProjects.length === 0) {
+            emptyState.style.display = 'block';
+        } else {
+            emptyState.style.display = 'none';
+            
+            filteredProjects.forEach(project => {
+                const projectCard = createProjectCard(project);
+                projectsContainer.appendChild(projectCard);
+            });
+        }
+    }
+
+    // Create a project card element
+    function createProjectCard(project) {
+        const card = document.createElement('div');
+        card.className = 'project-card';
+        
+        card.innerHTML = `
+            <div class="project-image" style="background-image: url('${project.image}')">
+                <div class="project-category">${capitalizeFirstLetter(project.category)}</div>
+            </div>
+            <div class="project-info">
+                <h3 class="project-title">${project.title}</h3>
+                <p class="project-student">By ${project.student}</p>
+                <p class="project-description">${project.description}</p>
+                <div class="project-tags">
+                    ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                </div>
+                <div class="project-actions">
+                    <button class="project-view">View Project</button>
+                    <button class="project-like" data-id="${project.id}">
+                        <span>❤</span> <span class="like-count">${project.likes}</span>
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        // Add like functionality
+        const likeButton = card.querySelector('.project-like');
+        likeButton.addEventListener('click', () => {
+            const projectId = parseInt(likeButton.getAttribute('data-id'));
+            const project = projectsData.find(p => p.id === projectId);
+            if (project) {
+                project.likes++;
+                const likeCount = likeButton.querySelector('.like-count');
+                likeCount.textContent = project.likes;
+            }
+        });
+        
+        // Add view project functionality
+        const viewButton = card.querySelector('.project-view');
+        viewButton.addEventListener('click', () => {
+            alert(`Viewing project: ${project.title} by ${project.student}`);
+            // In a real application, this would navigate to a detailed view page
+        });
+        
+        return card;
+    }
+
+    // Helper function to capitalize first letter
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
 </script>
 </body>
 </html>
