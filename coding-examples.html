@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Science</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+        }
+        
+        header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+        
+        .course-title {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-subtitle {
+            font-size: 1.2rem;
+            font-weight: normal;
+        }
+        
+        nav {
+            background-color: var(--primary-color);
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            padding: 1rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+        }
+        
+        h2 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+            flex: 1 1 300px;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .card h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .resources-list, .syllabus-list {
+            list-style: none;
+        }
+        
+        .resources-list li, .syllabus-list li {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .resources-list a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .resources-list a:hover {
+            text-decoration: underline;
+        }
+        
+        .resources-list p {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .student-work {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-img {
+            width: 100%;
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+        }
+        
+        .project-info {
+            padding: 1.5rem;
+        }
+        
+        .project-title {
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .student-name {
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .project-desc {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .small-btn {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.85rem;
+        }
+        
+        .reset-btn {
+            background-color: #95a5a6;
+        }
+        
+        .reset-btn:hover {
+            background-color: #7f8c8d;
+        }
+        
+        .submit-btn {
+            background-color: var(--accent-color);
+        }
+        
+        .submit-btn:hover {
+            background-color: #c0392b;
+        }
+        
+        .section-hidden {
+            display: none;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input[type="text"],
+        .form-group input[type="date"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        .form-group input[type="file"] {
+            padding: 0.5rem 0;
+        }
+        
+        .file-instructions {
+            font-size: 0.85rem;
+            color: #777;
+            margin-top: 0.5rem;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .checkbox-group input {
+            margin-top: 0.3rem;
+            margin-right: 0.5rem;
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .submission-form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .submission-history {
+            margin-bottom: 2rem;
+        }
+        
+        .submission-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        .submission-table th,
+        .submission-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .submission-table th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 500;
+        }
+        
+        .submission-table tr:nth-child(even) {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+        
+        .status-graded {
+            color: var(--success-color);
+            font-weight: 500;
+        }
+        
+        .status-pending {
+            color: var(--warning-color);
+            font-weight: 500;
+        }
+        
+        .submission-guidelines {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .submission-guidelines ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .submission-guidelines li {
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        .contact-info {
+            margin-bottom: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+        .description {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            nav li {
+                padding: 0.5rem;
+            }
+            
+            .course-title {
+                font-size: 1.8rem;
+            }
+            
+            .course-subtitle {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="course-title">Computer Science</h1>
+        <p class="course-subtitle">Introduction to Programming and Technology</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="Index.html" class="home-btn">Home</a></li>
+            <li><a href="Syllabus.html" class="syllabus-btn">Syllabus</a></li>
+            <li><a href="Resources.html" class="resources-btn">Resources</a></li>
+            <li><a href="showcase.html" class="submitwork-btn">Showcase</a></li>
+            <li><a href="coding-examples.html" class="active">Coding Examples</a></li>
+        </ul>
+    </nav>
+<body>
+    
+    <div class="container">
+        <div style="margin-bottom: 60px;">
+            <h2>Python Code Examples</h2>
+            <p> Below are some interactive Python code examples. Select an example from the dropdown to view the code.</p>
+        <label for="example-select">Select an example:</label>
+        <select id="example-select">
+            <option value="">-- Choose a Python example --</option>
+            <option value="hello-world">Hello World</option>
+            <option value="variables">Variables and Data Types</option>
+            <option value="conditionals">Conditional Statements</option>
+            <option value="loops">Loops</option>
+            <option value="functions">Functions</option>
+            <option value="lists">Lists and List Comprehensions</option>
+            <option value="dictionaries">Dictionaries</option>
+            <option value="classes">Classes and Objects</option>
+            <option value="file-io">File I/O</option>
+            <option value="exception">Exception Handling</option>
+        </select>
+        
+        <div id="code-container">
+            <div class="description">
+                <p>Please select a Python example from the dropdown above to view the code.</p>
+            </div>
+            <pre><code id="code-display">
+# Your code will appear here after selecting an example
+            </code></pre>
+        </div>
+    </div>
+</div>
+    <footer>
+        <div class="contact-info">
+            <div style="bottom:auto">
+            <p>Instructor: Mr. Brummer</p>
+            <p>Email: mbrummer@schools.nyc.gov</p>
+            <p>Office Hours: ---</p>
+        </div>
+        <p>&copy; 2025 Computer Science</p>
+    </footer>
+
+    <script>
+        // Define code examples
+        const codeExamples = {
+            'hello-world': {
+                description: "The classic 'Hello, World!' program - the traditional first program for learning any language.",
+                code: `# Simple Hello World program
+print("Hello, World!")
+
+# With a variable
+message = "Hello, Python World!"
+print(message)
+
+# Taking user input
+name = input("Enter your name: ")
+print(f"Hello, {name}!")`
+            },
+            'variables': {
+                description: "Examples of different Python data types and variable assignments.",
+                code: `# Integer
+count = 42
+print(f"Integer: {count}, Type: {type(count)}")
+
+# Float
+pi = 3.14159
+print(f"Float: {pi}, Type: {type(pi)}")
+
+# String
+name = "Python"
+print(f"String: {name}, Type: {type(name)}")
+
+# Boolean
+is_awesome = True
+print(f"Boolean: {is_awesome}, Type: {type(is_awesome)}")
+
+# List
+languages = ["Python", "Java", "JavaScript"]
+print(f"List: {languages}, Type: {type(languages)}")
+
+# Dictionary
+student = {"name": "Alice", "age": 20, "courses": ["CS101", "CS102"]}
+print(f"Dictionary: {student}, Type: {type(student)}")
+
+# Type conversion
+num_str = "123"
+num_int = int(num_str)
+print(f"Converted string to int: {num_int}, Type: {type(num_int)}")`
+            },
+            'conditionals': {
+                description: "Conditional statements (if, elif, else) allow you to execute code based on conditions.",
+                code: `# Basic if statement
+age = 18
+
+if age >= 18:
+    print("You are an adult")
+else:
+    print("You are a minor")
+
+# if-elif-else chain
+score = 85
+
+if score >= 90:
+    grade = "A"
+elif score >= 80:
+    grade = "B"
+elif score >= 70:
+    grade = "C"
+elif score >= 60:
+    grade = "D"
+else:
+    grade = "F"
+
+print(f"Your grade is: {grade}")
+
+# Ternary conditional expression
+is_sunny = True
+activity = "go outside" if is_sunny else "stay indoors"
+print(f"You should {activity}")
+
+# Nested if statements
+has_ticket = True
+has_id = True
+
+if has_ticket:
+    if has_id:
+        print("Enjoy the show!")
+    else:
+        print("You need ID to enter")
+else:
+    print("You need a ticket")`
+            },
+            'loops': {
+                description: "Loops allow you to repeat code execution. Python has for and while loops.",
+                code: `# For loop with range
+print("Counting from 1 to 5:")
+for i in range(1, 6):
+    print(i)
+
+# For loop with list
+print("\\nLooping through a list:")
+fruits = ["apple", "banana", "cherry"]
+for fruit in fruits:
+    print(f"I like {fruit}s")
+
+# While loop
+print("\\nWhile loop example:")
+count = 0
+while count < 5:
+    print(f"Count is {count}")
+    count += 1
+
+# Break statement
+print("\\nUsing break:")
+for i in range(1, 10):
+    if i == 6:
+        print("Breaking the loop at 6")
+        break
+    print(i)
+
+# Continue statement
+print("\\nUsing continue (skipping even numbers):")
+for i in range(1, 10):
+    if i % 2 == 0:
+        continue
+    print(i)
+
+# Nested loops
+print("\\nNested loops (multiplication table):")
+for i in range(1, 4):
+    for j in range(1, 4):
+        print(f"{i} × {j} = {i*j}")`
+            },
+            'functions': {
+                description: "Functions help organize code into reusable blocks. Python functions can have default and keyword arguments.",
+                code: `# Basic function
+def greet(name):
+    """This function greets the person passed in as a parameter"""
+    return f"Hello, {name}!"
+
+print(greet("Alice"))
+
+# Function with default parameter
+def power(base, exponent=2):
+    """Calculate the power of a number"""
+    return base ** exponent
+
+print(f"2^2 = {power(2)}")
+print(f"2^3 = {power(2, 3)}")
+
+# Function with multiple return values
+def get_dimensions():
+    """Return width and height"""
+    width = 100
+    height = 50
+    return width, height
+
+width, height = get_dimensions()
+print(f"Width: {width}, Height: {height}")
+
+# *args - variable number of arguments
+def sum_all(*args):
+    """Sum all numbers"""
+    total = 0
+    for num in args:
+        total += num
+    return total
+
+print(f"Sum of 1, 2, 3: {sum_all(1, 2, 3)}")
+print(f"Sum of 1 to 5: {sum_all(1, 2, 3, 4, 5)}")
+
+# **kwargs - variable keyword arguments
+def display_info(**kwargs):
+    """Display person information"""
+    for key, value in kwargs.items():
+        print(f"{key}: {value}")
+
+display_info(name="Alice", age=25, job="Developer")`
+            },
+            'lists': {
+                description: "Lists are ordered, mutable collections that can store different types of objects.",
+                code: `# Creating lists
+empty_list = []
+numbers = [1, 2, 3, 4, 5]
+mixed = [1, "Hello", 3.14, True]
+
+print(f"Numbers: {numbers}")
+print(f"Mixed types: {mixed}")
+
+# Accessing elements
+print(f"First element: {numbers[0]}")
+print(f"Last element: {numbers[-1]}")
+
+# Slicing
+print(f"First three elements: {numbers[0:3]}")
+print(f"Last two elements: {numbers[-2:]}")
+
+# List methods
+numbers.append(6)       # Add to end
+print(f"After append: {numbers}")
+
+numbers.insert(0, 0)    # Insert at position
+print(f"After insert: {numbers}")
+
+popped = numbers.pop()  # Remove and return last item
+print(f"Popped item: {popped}")
+print(f"After pop: {numbers}")
+
+numbers.remove(3)       # Remove specific value
+print(f"After remove(3): {numbers}")
+
+# Sorting
+unsorted = [3, 1, 4, 1, 5, 9]
+print(f"Unsorted: {unsorted}")
+
+# Sort in place
+unsorted.sort()
+print(f"Sorted in place: {unsorted}")
+
+# Create new sorted list
+original = [3, 1, 4, 1, 5, 9]
+sorted_list = sorted(original)
+print(f"Original: {original}")
+print(f"New sorted list: {sorted_list}")
+
+# List comprehensions
+squares = [x**2 for x in range(1, 6)]
+print(f"Squares: {squares}")
+
+even_numbers = [x for x in range(1, 11) if x % 2 == 0]
+print(f"Even numbers: {even_numbers}")`
+            },
+            'dictionaries': {
+                description: "Dictionaries are key-value pairs that allow fast lookup by key.",
+                code: `# Creating dictionaries
+empty_dict = {}
+student = {
+    "name": "Alice",
+    "age": 20,
+    "major": "Computer Science",
+    "gpa": 3.8
+}
+
+print(f"Student info: {student}")
+
+# Accessing values
+print(f"Student name: {student['name']}")
+
+# Using get() (safer, returns None or default if key doesn't exist)
+print(f"Student ID: {student.get('id', 'Not available')}")
+
+# Adding/updating items
+student["year"] = "Junior"
+student["age"] = 21
+print(f"Updated student: {student}")
+
+# Removing items
+removed_major = student.pop("major")
+print(f"Removed major: {removed_major}")
+print(f"Student after pop: {student}")
+
+# Checking if key exists
+if "name" in student:
+    print(f"Found student name: {student['name']}")
+
+# Looping through dictionaries
+print("\\nDictionary keys:")
+for key in student:
+    print(key)
+
+print("\\nDictionary values:")
+for value in student.values():
+    print(value)
+
+print("\\nDictionary items (key-value pairs):")
+for key, value in student.items():
+    print(f"{key}: {value}")
+
+# Dictionary comprehension
+squares = {x: x**2 for x in range(1, 6)}
+print(f"Squares dictionary: {squares}")
+
+# Nested dictionaries
+users = {
+    "user1": {
+        "name": "Alice",
+        "email": "alice@example.com"
+    },
+    "user2": {
+        "name": "Bob",
+        "email": "bob@example.com"
+    }
+}
+
+print(f"\\nUser1 email: {users['user1']['email']}")`
+            },
+            'classes': {
+                description: "Classes allow you to create your own objects with properties and methods.",
+                code: `# Basic class definition
+class Dog:
+    # Class attribute
+    species = "Canis familiaris"
+    
+    # Constructor (initializer)
+    def __init__(self, name, age):
+        # Instance attributes
+        self.name = name
+        self.age = age
+    
+    # Instance method
+    def description(self):
+        return f"{self.name} is {self.age} years old"
+    
+    # Another instance method
+    def speak(self, sound):
+        return f"{self.name} says {sound}"
+
+# Creating instances (objects)
+miles = Dog("Miles", 4)
+buddy = Dog("Buddy", 9)
+
+# Accessing attributes and methods
+print(f"{miles.name} is {miles.age} years old")
+print(f"{buddy.name} is {buddy.age} years old")
+
+print(f"Both {miles.name} and {buddy.name} are {Dog.species}")
+
+print(miles.description())
+print(miles.speak("Woof Woof"))
+print(buddy.speak("Bow Wow"))
+
+# Inheritance
+class Retriever(Dog):
+    def __init__(self, name, age, skills):
+        # Call the parent class's __init__ method
+        super().__init__(name, age)
+        self.skills = skills
+        
+    def list_skills(self):
+        skills_list = ", ".join(self.skills)
+        return f"{self.name}'s skills: {skills_list}"
+
+charlie = Retriever("Charlie", 3, ["fetch", "swim", "tracking"])
+print(charlie.description())  # Inherited method
+print(charlie.list_skills())  # Subclass method`
+            },
+            'file-io': {
+                description: "Python makes it easy to read from and write to files.",
+                code: `# Writing to a file
+print("Writing to a file...")
+
+# Open file in write mode ('w')
+with open("example.txt", "w") as file:
+    file.write("Hello, Python!\\n")
+    file.write("This is a demo of file I/O.\\n")
+    file.write("File operations are essential for data processing.\\n")
+
+print("File written successfully!\\n")
+
+# Reading an entire file at once
+print("Reading the entire file:")
+with open("example.txt", "r") as file:
+    content = file.read()
+    print(content)
+
+# Reading line by line
+print("\\nReading line by line:")
+with open("example.txt", "r") as file:
+    for line in file:
+        print(f"Line: {line.strip()}")
+
+# Reading into a list of lines
+print("\\nReading into a list:")
+with open("example.txt", "r") as file:
+    lines = file.readlines()
+    print(f"Number of lines: {len(lines)}")
+    print(f"Lines: {lines}")
+
+# Appending to a file
+print("\\nAppending to the file...")
+with open("example.txt", "a") as file:
+    file.write("This line was appended later.\\n")
+
+# Reading after append
+print("Reading file after append:")
+with open("example.txt", "r") as file:
+    print(file.read())
+
+# Note: The file operations above would create a real file if executed
+# In this example, they serve as demonstrations only`
+            },
+            'exception': {
+                description: "Exception handling allows your program to recover from errors and continue execution.",
+                code: `# Basic try-except
+try:
+    x = 10 / 0  # This will cause a ZeroDivisionError
+except:
+    print("An error occurred")
+
+# Catching specific exceptions
+try:
+    x = 10 / 0
+except ZeroDivisionError:
+    print("Error: Division by zero")
+
+# Multiple exception types
+try:
+    number = int("abc")  # This will cause a ValueError
+except ZeroDivisionError:
+    print("Error: Division by zero")
+except ValueError:
+    print("Error: Invalid conversion")
+
+# Exception with message
+try:
+    file = open("nonexistent_file.txt", "r")
+except FileNotFoundError as error:
+    print(f"Error: {error}")
+
+# try-except-else
+try:
+    x = 10 / 2  # This will not cause an error
+except ZeroDivisionError:
+    print("Error: Division by zero")
+else:
+    print(f"Division successful, result = {x}")  # Executed only if no exception
+
+# try-except-finally
+try:
+    file = open("example.txt", "w")
+    file.write("Hello, World!")
+except:
+    print("An error occurred while writing to the file")
+finally:
+    # This block is always executed, regardless of exception
+    file.close()
+    print("File closed successfully")
+
+# Creating custom exceptions
+class CustomError(Exception):
+    """A custom exception class"""
+    def __init__(self, message):
+        self.message = message
+        super().__init__(self.message)
+
+# Raising exceptions
+def validate_age(age):
+    if age < 0:
+        raise ValueError("Age cannot be negative")
+    if age > 120:
+        raise CustomError("Age seems unrealistic")
+    return f"Age {age} is valid"
+
+# Using our exception-raising function
+try:
+    print(validate_age(25))
+    print(validate_age(-5))   # This will trigger ValueError
+except ValueError as error:
+    print(f"Validation error: {error}")
+except CustomError as error:
+    print(f"Custom error: {error}")`
+            }
+        };
+
+        // Function to update code display
+        function updateCodeDisplay(exampleId) {
+            const codeDisplay = document.getElementById('code-display');
+            const descriptionDiv = document.querySelector('.description');
+            
+            if (exampleId && codeExamples[exampleId]) {
+                const example = codeExamples[exampleId];
+                descriptionDiv.innerHTML = `<p>${example.description}</p>`;
+                codeDisplay.textContent = example.code;
+            } else {
+                descriptionDiv.innerHTML = `<p>Please select a Python example from the dropdown above to view the code.</p>`;
+                codeDisplay.textContent = '# Your code will appear here after selecting an example';
+            }
+        }
+
+        // Add event listener to the select element
+        const selectElement = document.getElementById('example-select');
+        selectElement.addEventListener('change', function() {
+            updateCodeDisplay(this.value);
+        });
+    </script>
+</body>
+</html>

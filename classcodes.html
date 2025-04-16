@@ -384,7 +384,6 @@
         }
     </style>
 </head>
-
 <body>
     <header>
         <h1 class="course-title">Computer Science</h1>
@@ -393,172 +392,47 @@
     
     <nav>
         <ul>
-            <li><a href="Home.html" class="home-btn">Home</a></li>
+            <li><a href="Index.html" class="home-btn">Home</a></li>
             <li><a href="Syllabus.html" class="syllabus-btn">Syllabus</a></li>
             <li><a href="Resources.html" class="resources-btn">Resources</a></li>
-            <li><a href="submitwork.html" class="submitwork-btn">Submit an Assignment</a></li>
+            <li><a href="showcase.html" class="submitwork-btn">Showcase</a></li>
+            <li><a href="coding-examples.html" class="active">Coding Examples</a></li>
         </ul>
     </nav>
-
-<main>
-    <h2>Assignment Submission</h2>
-    <p>Use this form to submit your assignments for grading. Be sure to include all required files and documentation.</p>
     
-    <div class="submission-form">
-        <form id="assignment-form" action="process_submission.php" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="student-name">Full Name:</label>
-                <input type="text" id="student-name" name="student-name" required>
+    <main>
+        <section id="home">
+            <h3>Choose the class period you have for the google classroom code.</h3>
+            <div class="container">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>4th Period</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Google Classroom Code: <strong>pwocufq</strong></p>
+                        <a href="https://classroom.google.com/c/NzI1NTkzODAzNzk2?cjc=pwocufq" class="btn">Join Class</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>7th Period</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Google Classroom Code: <strong>nazyoap</strong></p>
+                        <a href="https://classroom.google.com/c/NzI1NTkzNDYzODYx?cjc=nazyoap" class="btn">Join Class</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>8th Period</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Google Classroom Code: <strong>pofui2f</strong></p>
+                        <a href="https://classroom.google.com/c/NzM2OTM4MDAwNTkx?cjc=pofui2f" class="btn">Join Class</a>
+                    </div>
+                </div>
             </div>
-            
-            <div class="form-group">
-                <label for="student-id">Student ID:</label>
-                <input type="text" id="student-id" name="student-id" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="assignment-number">Assignment Number:</label>
-                <input type="text" id = "assignment-number">--Enter Assignment--</input>
-            </div>
-            
-            <div class="form-group">
-                <label for="submission-date">Submission Date:</label>
-                <input type="date" id="submission-date" name="submission-date" value="<?php echo date('Y-m-d'); ?>" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="assignment-files">Upload Files (ZIP or Python files):</label>
-                <input type="file" id="assignment-files" name="assignment-files[]" multiple accept=".py,.zip,.pdf,.docx,.txt" required>
-                <p>Follow file naming conventions: First Initial, Last Name, Assignment Name ex: mbrummerpythonlists.py</p>
-                <p class="file-instructions">Accepted formats: .py, .zip, .pdf, .docx, .txt (Max size: 20MB)</p>
-            </div>
-            
-            <div class="form-group">
-                <label for="comments">Comments (Optional):</label>
-                <textarea id="comments" name="comments" rows="4" placeholder="Provide any additional information or context about your submission..."></textarea>
-            </div>
-            
-            <div class="form-group checkbox-group">
-                <input type="checkbox" id="honor-code" name="honor-code" required>
-                <label for="honor-code">I confirm that this is my own work and I have followed the course academic integrity guidelines.</label>
-            </div>
-            
-            <div id="submission-status"></div>
-            
-            <div class="form-actions">
-                <button type="submit" class="btn submit-btn">Submit Assignment</button>
-                <button type="reset" class="btn reset-btn">Clear Form</button>
-            </div>
-        </form>
-        
-        <script>
-            // Set the current date as the default submission date
-            document.addEventListener('DOMContentLoaded', function() {
-                const today = new Date().toISOString().split('T')[0];
-                document.getElementById('submission-date').value = today;
-                
-                // Check for status parameters in URL
-                const urlParams = new URLSearchParams(window.location.search);
-                const status = urlParams.get('status');
-                const message = urlParams.get('message');
-                
-                if (status === 'success') {
-                    const statusDiv = document.getElementById('submission-status');
-                    statusDiv.innerHTML = '<div class="success-message">Assignment successfully submitted!</div>';
-                    statusDiv.scrollIntoView({ behavior: 'smooth' });
-                } else if (status === 'error' && message) {
-                    const statusDiv = document.getElementById('submission-status');
-                    statusDiv.innerHTML = '<div class="error-message">Error: ' + message + '</div>';
-                    statusDiv.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-            
-            // Optional: Add form submission via AJAX
-            document.getElementById('assignment-form').addEventListener('submit', function(e) {
-                
-                e.preventDefault();
-                const formData = new FormData(this);
-                
-                // Show loading state
-                const statusDiv = document.getElementById('submission-status');
-                statusDiv.innerHTML = '<div class="info-message">Submitting your assignment... Please wait.</div>';
-                
-                fetch('process_submission.php', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        statusDiv.innerHTML = '<div class="success-message">' + data.message + '</div>';
-                        // Reset form on success
-                        document.getElementById('assignment-form').reset();
-                    } else {
-                        statusDiv.innerHTML = '<div class="error-message">Error: ' + data.message + '</div>';
-                    }
-                    statusDiv.scrollIntoView({ behavior: 'smooth' });
-                })
-                .catch(error => {
-                    statusDiv.innerHTML = '<div class="error-message">Error: ' + error.message + '</div>';
-                    statusDiv.scrollIntoView({ behavior: 'smooth' });
-                });
-                
-            });
-        </script>
-    </div>
-    
-    <div class="submission-guidelines">
-        <h3>Submission Guidelines</h3>
-        <ul>
-            <li>All assignments must be submitted before the deadline specified in the syllabus.</li>
-            <li>Include your name and student ID as a comment at the beginning of each code file.</li>
-            <li>Ensure your code is well-documented with appropriate comments.</li>
-            <li>Test your code thoroughly before submission.</li>
-            <li>If submitting multiple files, compress them into a single ZIP file.</li>
-            <li>Late submissions may incur penalties as outlined in the course policy.</li>
-        </ul>
-    </div>
-</section>
-</main>
-    
-<footer>
-    <div class="contact-info">
-        <p>Instructor: Mr. Brummer</p>
-        <p>Email: mbrummer@schools.nyc.gov</p>
-        <p>Office Hours: ---</p>
-    </div>
-    <p>&copy; 2025 Computer Science</p>
-</footer>
-
-<script>
-    // Navigation functionality
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('section');
-    
-    // Show home section by default
-    document.getElementById('home').classList.remove('section-hidden');
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            
-            // Remove active class from all links
-            navLinks.forEach(link => link.classList.remove('active'));
-            
-            // Add active class to clicked link
-            link.classList.add('active');
-            
-            // Hide all sections
-            sections.forEach(section => section.classList.add('section-hidden'));
-            
-            // Show corresponding section
-            const sectionId = link.getAttribute('data-section');
-            document.getElementById(sectionId).classList.remove('section-hidden');
-            
-            // Scroll to top
-            window.scrollTo(0, 0);
-        });
-    });
-</script>
+        </section>
+    </main>
 </body>
 </html>
