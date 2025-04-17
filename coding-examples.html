@@ -414,21 +414,23 @@
     
     <div class="container">
         <div style="margin-bottom: 60px;">
-            <h2>Python Code Examples</h2>
-            <p> Below are some interactive Python code examples. Select an example from the dropdown to view the code.</p>
+            <h2>Code Examples</h2>
+            <p> Below are some code examples. Select an example from the dropdown to view the code.</p>
         <label for="example-select">Select an example:</label>
         <select id="example-select">
-            <option value="">-- Choose a Python example --</option>
-            <option value="hello-world">Hello World</option>
-            <option value="variables">Variables and Data Types</option>
-            <option value="conditionals">Conditional Statements</option>
-            <option value="loops">Loops</option>
-            <option value="functions">Functions</option>
-            <option value="lists">Lists and List Comprehensions</option>
-            <option value="dictionaries">Dictionaries</option>
-            <option value="classes">Classes and Objects</option>
-            <option value="file-io">File I/O</option>
-            <option value="exception">Exception Handling</option>
+            <option value="">-- Choose a code example --</option>
+            <option value="hello-world">PYTHON: Hello World</option>
+            <option value="variables">PYTHON: Variables and Data Types</option>
+            <option value="conditionals">PYTHON: Conditional Statements</option>
+            <option value="loops">PYTHON: Loops</option>
+            <option value="functions">PYTHON: Functions</option>
+            <option value="lists">PYTHON: Lists and List Comprehensions</option>
+            <option value="dictionaries">PYTHON:Dictionaries</option>
+            <option value="navbar">HTML: Basic Navigation Bar</option>
+            <option value="gallery">HTML: Image Gallery</option>
+            <option value="contact">HTML: Contact Form</option>
+            <option value="action">HTML: Hero Section with Call to Action</option>
+            <option value="card">HTML: Responsive Card Layout</option>
         </select>
         
         <div id="code-container">
@@ -745,173 +747,259 @@ users = {
 
 print(f"\\nUser1 email: {users['user1']['email']}")`
             },
-            'classes': {
-                description: "Classes allow you to create your own objects with properties and methods.",
-                code: `# Basic class definition
-class Dog:
-    # Class attribute
-    species = "Canis familiaris"
-    
-    # Constructor (initializer)
-    def __init__(self, name, age):
-        # Instance attributes
-        self.name = name
-        self.age = age
-    
-    # Instance method
-    def description(self):
-        return f"{self.name} is {self.age} years old"
-    
-    # Another instance method
-    def speak(self, sound):
-        return f"{self.name} says {sound}"
+            'navbar': {
+                description: "A simple HTML navigation bar with links.",
+                code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Navigation Bar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-# Creating instances (objects)
-miles = Dog("Miles", 4)
-buddy = Dog("Buddy", 9)
-
-# Accessing attributes and methods
-print(f"{miles.name} is {miles.age} years old")
-print(f"{buddy.name} is {buddy.age} years old")
-
-print(f"Both {miles.name} and {buddy.name} are {Dog.species}")
-
-print(miles.description())
-print(miles.speak("Woof Woof"))
-print(buddy.speak("Bow Wow"))
-
-# Inheritance
-class Retriever(Dog):
-    def __init__(self, name, age, skills):
-        # Call the parent class's __init__ method
-        super().__init__(name, age)
-        self.skills = skills
-        
-    def list_skills(self):
-        skills_list = ", ".join(self.skills)
-        return f"{self.name}'s skills: {skills_list}"
-
-charlie = Retriever("Charlie", 3, ["fetch", "swim", "tracking"])
-print(charlie.description())  # Inherited method
-print(charlie.list_skills())  # Subclass method`
+    <h1>Welcome to My Website</h1>
+    <p>This is a simple navigation bar example.</p>
+</body>
+</html>`
             },
-            'file-io': {
-                description: "Python makes it easy to read from and write to files.",
-                code: `# Writing to a file
-print("Writing to a file...")
-
-# Open file in write mode ('w')
-with open("example.txt", "w") as file:
-    file.write("Hello, Python!\\n")
-    file.write("This is a demo of file I/O.\\n")
-    file.write("File operations are essential for data processing.\\n")
-
-print("File written successfully!\\n")
-
-# Reading an entire file at once
-print("Reading the entire file:")
-with open("example.txt", "r") as file:
-    content = file.read()
-    print(content)
-
-# Reading line by line
-print("\\nReading line by line:")
-with open("example.txt", "r") as file:
-    for line in file:
-        print(f"Line: {line.strip()}")
-
-# Reading into a list of lines
-print("\\nReading into a list:")
-with open("example.txt", "r") as file:
-    lines = file.readlines()
-    print(f"Number of lines: {len(lines)}")
-    print(f"Lines: {lines}")
-
-# Appending to a file
-print("\\nAppending to the file...")
-with open("example.txt", "a") as file:
-    file.write("This line was appended later.\\n")
-
-# Reading after append
-print("Reading file after append:")
-with open("example.txt", "r") as file:
-    print(file.read())
-
-# Note: The file operations above would create a real file if executed
-# In this example, they serve as demonstrations only`
+            'gallery': {
+                description: "An image gallery layout using HTML and CSS.",
+                code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 20px;
+        }
+        .gallery img {
+            width: calc(33.333% - 10px);
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Gallery</h1>
+    <div class="gallery">
+        <img src="https://via.placeholder.com/300" alt="Image 1">
+        <img src="https://via.placeholder.com/300" alt="Image 2">
+        <img src="https://via.placeholder.com/300" alt="Image 3">
+        <img src="https://via.placeholder.com/300" alt="Image 4">
+        <img src="https://via.placeholder.com/300" alt="Image 5">
+        <img src="https://via.placeholder.com/300" alt="Image 6">
+    </div>
+</body>
+</html>`
             },
-            'exception': {
-                description: "Exception handling allows your program to recover from errors and continue execution.",
-                code: `# Basic try-except
-try:
-    x = 10 / 0  # This will cause a ZeroDivisionError
-except:
-    print("An error occurred")
+            'contact': {
+                description: "A simple contact form layout using HTML.",
+                code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .contact-form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .contact-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .contact-form button {
+            background-color: #333;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contact Us</h1>
+    <form class="contact-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
 
-# Catching specific exceptions
-try:
-    x = 10 / 0
-except ZeroDivisionError:
-    print("Error: Division by zero")
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
 
-# Multiple exception types
-try:
-    number = int("abc")  # This will cause a ValueError
-except ZeroDivisionError:
-    print("Error: Division by zero")
-except ValueError:
-    print("Error: Invalid conversion")
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
 
-# Exception with message
-try:
-    file = open("nonexistent_file.txt", "r")
-except FileNotFoundError as error:
-    print(f"Error: {error}")
-
-# try-except-else
-try:
-    x = 10 / 2  # This will not cause an error
-except ZeroDivisionError:
-    print("Error: Division by zero")
-else:
-    print(f"Division successful, result = {x}")  # Executed only if no exception
-
-# try-except-finally
-try:
-    file = open("example.txt", "w")
-    file.write("Hello, World!")
-except:
-    print("An error occurred while writing to the file")
-finally:
-    # This block is always executed, regardless of exception
-    file.close()
-    print("File closed successfully")
-
-# Creating custom exceptions
-class CustomError(Exception):
-    """A custom exception class"""
-    def __init__(self, message):
-        self.message = message
-        super().__init__(self.message)
-
-# Raising exceptions
-def validate_age(age):
-    if age < 0:
-        raise ValueError("Age cannot be negative")
-    if age > 120:
-        raise CustomError("Age seems unrealistic")
-    return f"Age {age} is valid"
-
-# Using our exception-raising function
-try:
-    print(validate_age(25))
-    print(validate_age(-5))   # This will trigger ValueError
-except ValueError as error:
-    print(f"Validation error: {error}")
-except CustomError as error:
-    print(f"Custom error: {error}")`
+        <button type="submit">Send Message</button>
+    </form>
+</body>
+</html>`
+            },
+            'action': {
+                description: "A hero section with a call to action button.",
+                code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Section</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .hero {
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+        .hero h1 {
+            font-size: 3em;
+        }
+        .hero p {
+            font-size: 1.2em;
+        }
+        .hero button {
+            background-color: #e74c3c;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>Welcome to Our Website</h1>
+        <p>Your journey starts here.</p>
+        <button>Get Started</button>
+    </div>
+</body>
+</html>`
+            },
+            'card': {
+                description: "A responsive card layout using HTML and CSS.",
+                code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Card Layout</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: calc(33.333% - 20px);
+            padding: 20px;
+        }
+        .card img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+        .card h3 {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Responsive Card Layout</h1>
+    <div class="card-container">
+        <div class="card">
+            <img src="https://via.placeholder.com/300" alt="Card Image">
+            <h3>Card Title 1</h3>
+            <p>This is a description of the first card.</p>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/300" alt="Card Image">
+            <h3>Card Title 2</h3>
+            <p>This is a description of the second card.</p>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/300" alt="Card Image">
+            <h3>Card Title 3</h3>
+            <p>This is a description of the third card.</p>
+        </div>
+    </div>
+</body>
+</html>`
             }
-        };
+};
 
         // Function to update code display
         function updateCodeDisplay(exampleId) {
