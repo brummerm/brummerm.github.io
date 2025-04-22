@@ -297,10 +297,7 @@
             height: auto;
             cursor: pointer; /* Shows a hand cursor when hovering over the image */
         }
-        header, nav {
-            display: block;
-            margin-bottom: 0;
-        }
+        
         @media (max-width: 768px) {
             .tabs {
                 flex-direction: column;
@@ -325,6 +322,16 @@
                 width: 100%;
                 border-radius: 4px;
                 margin-bottom: 10px;
+            }
+            .banner {
+                width: 100%;
+                text-align: center;
+                background-color: var(--primary-color);
+            }
+            .banner img {
+                max-width: 100%;
+                height: auto;
+                cursor: pointer; /* Shows a hand cursor when hovering over the image */
             }
         }
     </style>

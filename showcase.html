@@ -422,10 +422,7 @@
             height: auto;
             cursor: pointer; /* Shows a hand cursor when hovering over the image */
         }
-        header, nav {
-            display: block;
-            margin-bottom: 0;
-        }
+        
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2rem;
@@ -433,6 +430,16 @@
             
             .projects-grid {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            .banner {
+                width: 100%;
+                text-align: center;
+                background-color: var(--primary-color);
+            }
+            .banner img {
+                max-width: 100%;
+                height: auto;
+                cursor: pointer; /* Shows a hand cursor when hovering over the image */
             }
         }
         

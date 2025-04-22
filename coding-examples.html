@@ -384,10 +384,6 @@
             height: auto;
             cursor: pointer; /* Shows a hand cursor when hovering over the image */
         }
-        header, nav {
-            display: block;
-            margin-bottom: 0;
-        }
         @media (max-width: 768px) {
             nav ul {
                 flex-direction: column;
@@ -404,6 +400,16 @@
             
             .course-subtitle {
                 font-size: 1rem;
+            }
+            .banner {
+                width: 100%;
+                text-align: center;
+                background-color: var(--primary-color);
+            }
+            .banner img {
+                max-width: 100%;
+                height: auto;
+                cursor: pointer; /* Shows a hand cursor when hovering over the image */
             }
         }
     </style>
