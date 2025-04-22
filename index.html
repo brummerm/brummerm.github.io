@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Computer Science course introduction, resources, and examples">
     <title>Computer Science</title>
     <style>
         :root {
@@ -11,6 +12,9 @@
             --accent-color: #e74c3c;
             --light-color: #ecf0f1;
             --dark-color: #2c3e50;
+            --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 5px 15px rgba(0, 0, 0, 0.2);
+            --transition: all 0.3s ease;
         }
         
         * {
@@ -24,6 +28,9 @@
             line-height: 1.6;
             color: var(--dark-color);
             background-color: var(--light-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         
         header {
@@ -33,27 +40,29 @@
             text-align: center;
         }
         
-        .course-title {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+        .banner {
+            width: 100%;
+            text-align: center;
+            background-color: var(--secondary-color);
         }
         
-        .course-subtitle {
-            font-size: 1.2rem;
-            font-weight: normal;
+        .banner img {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
         }
         
         nav {
             background-color: var(--primary-color);
-            display: flex;
-            justify-content: center;
         }
         
         nav ul {
             display: flex;
             list-style: none;
-            width: 100%;
             justify-content: center;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
         }
         
         nav li {
@@ -66,11 +75,12 @@
             font-weight: bold;
             padding: 0.5rem 1rem;
             border-radius: 4px;
-            transition: background-color 0.3s;
+            transition: var(--transition);
         }
         
-        nav a:hover {
+        nav a:hover, nav a:focus {
             background-color: rgba(255, 255, 255, 0.1);
+            outline: none;
         }
         
         .active {
@@ -79,16 +89,21 @@
         
         main {
             max-width: 1200px;
+            width: 100%;
             margin: 0 auto;
             padding: 2rem;
+            flex: 1 0 auto;
         }
         
         section {
             margin-bottom: 3rem;
         }
         
-        h2 {
+        h2, h3 {
             color: var(--secondary-color);
+        }
+        
+        h2 {
             margin-bottom: 1rem;
             padding-bottom: 0.5rem;
             border-bottom: 2px solid var(--primary-color);
@@ -98,20 +113,23 @@
             display: flex;
             flex-wrap: wrap;
             gap: 2rem;
+            margin-top: 2rem;
         }
         
         .card {
             background-color: white;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
             overflow: hidden;
-            transition: transform 0.3s;
+            transition: var(--transition);
             flex: 1 1 300px;
+            display: flex;
+            flex-direction: column;
         }
         
-        .card:hover {
+        .card:hover, .card:focus-within {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: var(--shadow-hover);
         }
         
         .card-header {
@@ -122,11 +140,20 @@
         
         .card-body {
             padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
         
         .card h3 {
             margin-bottom: 0.5rem;
         }
+        
+        .card p {
+            margin-bottom: 1rem;
+            flex: 1;
+        }
+        
         .btn {
             display: inline-block;
             background-color: var(--primary-color);
@@ -134,94 +161,50 @@
             padding: 0.5rem 1rem;
             border-radius: 4px;
             text-decoration: none;
-            transition: background-color 0.3s;
+            transition: var(--transition);
+            text-align: center;
+            margin-top: auto;
         }
         
-        .btn:hover {
+        .btn:hover, .btn:focus {
             background-color: #2980b9;
+            outline: none;
         }
         
-        .small-btn {
-            padding: 0.25rem 0.5rem;
-            font-size: 0.85rem;
-        }
-        .section-hidden {
-            display: none;
-        }
-        .form-group input[type="file"] {
-            padding: 0.5rem 0;
-        }
-        
-        .file-instructions {
-            font-size: 0.85rem;
-            color: #777;
-            margin-top: 0.5rem;
-        }
         footer {
             background-color: var(--secondary-color);
             color: white;
             text-align: center;
             padding: 2rem 0;
-            margin-top: 2rem;
+            margin-top: auto;
         }
         
         .contact-info {
             margin-bottom: 1rem;
         }
         
-        .social-links a {
-            color: white;
-            margin: 0 0.5rem;
-            font-size: 1.2rem;
-            text-decoration: none;
-        }
-        .logo {
-            display: flex;
-            margin-right: auto; 
-            margin-left: 0; 
-            float: left; 
-            max-width: 90px; 
-            height: 90px; 
-        }
-        .banner {
-            width: 100%;
-            text-align: center;
-            background-color: var(--secondary-color);
-        }
-        .banner img {
-            max-width: 100%;
-            height: auto;
-            cursor: pointer; /* Shows a hand cursor when hovering over the image */
-        }
-        
         @media (max-width: 768px) {
             nav ul {
-                display: flex;
-                list-style: none;
-                width: 100%;
-                justify-content: center;
+                flex-direction: column;
+                align-items: center;
             }
             
             nav li {
                 padding: 0.5rem;
-            }
-            
-            .course-title {
-                font-size: 1.8rem;
-            }
-            
-            .course-subtitle {
-                font-size: 1rem;
-            }
-            .banner {
                 width: 100%;
                 text-align: center;
-                background-color: var(--secondary-color);
             }
-            .banner img {
-                max-width: 100%;
-                height: auto;
-                cursor: pointer; /* Shows a hand cursor when hovering over the image */
+            
+            .card {
+                flex: 1 1 100%;
+            }
+            
+            main {
+                padding: 1rem;
+            }
+            
+            h3.course-intro {
+                font-size: 1rem;
             }
         }
     </style>
@@ -229,16 +212,15 @@
 <body>
     <header>
         <div class="banner">
-            <a href="index.html">
-                <img src="brummerm.github.io/Images/banner.png" alt="Website Banner">
-                
+            <a href="index.html" aria-label="Go to homepage">
+                <img src="brummerm.github.io/Images/banner.png" alt="Computer Science Course Banner">
             </a>
         </div>
     </header>
     
-    <nav>
+    <nav aria-label="Main navigation">
         <ul>
-            <li><a href="index.html" class="home-btn">Home</a></li>
+            <li><a href="index.html" class="home-btn" aria-current="page">Home</a></li>
             <li><a href="Syllabus.html" class="syllabus-btn">Syllabus</a></li>
             <li><a href="Resources.html" class="resources-btn">Resources</a></li>
             <li><a href="showcase.html" class="submitwork-btn">Showcase</a></li>
@@ -248,10 +230,8 @@
     
     <main>
         <section id="home">
-            <h3>This course provides an introduction to computer science, programming, and technology. You'll learn fundamental programming concepts, problem-solving strategies, and develop skills that will prepare you for more advanced computing courses.</h3>
+            <h3 class="course-intro">This course provides an introduction to computer science, programming, and technology. You'll learn fundamental programming concepts, problem-solving strategies, and develop skills that will prepare you for more advanced computing courses.</h3>
             
-            
-
             <div class="container">
                 <div class="card">
                     <div class="card-header">
@@ -269,7 +249,7 @@
                     </div>
                     <div class="card-body">
                         <p>Access tutorials, readings, coding exercises, and additional materials to support your learning throughout the course.</p>
-                        <a href="Resources.html" class="btn" >Browse Resources</a>
+                        <a href="Resources.html" class="btn">Browse Resources</a>
                     </div>
                 </div>
                 
@@ -309,41 +289,26 @@
     <footer>
         <div class="contact-info">
             <p>Instructor: Mr. Brummer</p>
-            <p>Email: mbrummer@schools.nyc.gov</p>
+            <p>Email: <a href="mailto:mbrummer@schools.nyc.gov" style="color: white;">mbrummer@schools.nyc.gov</a></p>
         </div>
-        <p>&copy; 2025 Computer Science</p>
+        <p>&copy; <span id="current-year">2025</span> Computer Science</p>
     </footer>
     
     <script>
-        // Navigation functionality
-        const navLinks = document.querySelectorAll('.nav-link');
-        const sections = document.querySelectorAll('section');
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
         
-        // Show home section by default
-        document.getElementById('home').classList.remove('section-hidden');
-        
-        document.querySelector('.nav-link[data-section="home"]').classList.add('active');
-        sections.forEach(section => section.classList.add('section-hidden'));
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                
-                // Remove active class from all links
-                navLinks.forEach(link => link.classList.remove('active'));
-                
-                // Add active class to clicked link
-                link.classList.add('active');
-                
-                // Hide all sections
-                sections.forEach(section => section.classList.add('section-hidden'));
-                
-                // Show corresponding section
-                const sectionId = link.getAttribute('data-section');
-                document.getElementById(sectionId).classList.remove('section-hidden');
-                
-                // Scroll to top
-                window.scrollTo(0, 0);
+        // Add active class to current page
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('nav a');
+            
+            navLinks.forEach(link => {
+                const linkHref = link.getAttribute('href');
+                if (linkHref === currentPage) {
+                    link.classList.add('active');
+                    link.setAttribute('aria-current', 'page');
+                }
             });
         });
     </script>

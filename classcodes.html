@@ -3,14 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Computer Science course introduction, resources, and examples">
     <title>Computer Science</title>
     <style>
         :root {
             --primary-color: #3498db;
+            --primary-dark: #2980b9;
             --secondary-color: #2c3e50;
-            --accent-color: #e74c3c;
             --light-color: #ecf0f1;
             --dark-color: #2c3e50;
+            --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 5px 15px rgba(0, 0, 0, 0.2);
+            --transition: transform 0.3s ease, box-shadow 0.3s ease;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --border-radius: 4px;
         }
         
         * {
@@ -24,53 +33,62 @@
             line-height: 1.6;
             color: var(--dark-color);
             background-color: var(--light-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         
-        header {
+        header, footer {
             background-color: var(--secondary-color);
             color: white;
-            padding: 1rem 0;
             text-align: center;
         }
         
-        .course-title {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+        header {
+            padding: var(--spacing-md) 0;
         }
         
-        .course-subtitle {
-            font-size: 1.2rem;
-            font-weight: normal;
+        .banner img {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
         }
         
         nav {
             background-color: var(--primary-color);
-            display: flex;
-            justify-content: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
         nav ul {
             display: flex;
             list-style: none;
-            width: 100%;
             justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
         nav li {
-            padding: 1rem;
+            padding: var(--spacing-md);
         }
         
         nav a {
             color: white;
             text-decoration: none;
             font-weight: bold;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--border-radius);
             transition: background-color 0.3s;
+            white-space: nowrap;
         }
         
-        nav a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+        nav a:hover, nav a:focus {
+            background-color: rgba(255, 255, 255, 0.2);
+            outline: none;
         }
         
         .active {
@@ -79,331 +97,160 @@
         
         main {
             max-width: 1200px;
+            width: 100%;
             margin: 0 auto;
-            padding: 2rem;
+            padding: var(--spacing-xl);
+            flex: 1 0 auto;
         }
         
-        section {
-            margin-bottom: 3rem;
-        }
-        
-        h2 {
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--primary-color);
+        .course-intro {
+            margin-bottom: var(--spacing-xl);
+            text-align: center;
+            font-weight: normal;
+            line-height: 1.8;
         }
         
         .container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
         }
         
         .card {
             background-color: white;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
             overflow: hidden;
-            transition: transform 0.3s;
-            flex: 1 1 300px;
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         
-        .card:hover {
+        .card:hover, .card:focus-within {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: var(--shadow-hover);
         }
         
         .card-header {
             background-color: var(--primary-color);
             color: white;
-            padding: 1rem;
+            padding: var(--spacing-md);
         }
         
         .card-body {
-            padding: 1.5rem;
+            padding: var(--spacing-lg);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
         
         .card h3 {
-            margin-bottom: 0.5rem;
+            margin-bottom: var(--spacing-sm);
         }
         
-        .resources-list, .syllabus-list {
-            list-style: none;
-        }
-        
-        .resources-list li, .syllabus-list li {
-            margin-bottom: 1rem;
-            padding: 1rem;
-            background-color: white;
-            border-radius: 4px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-        
-        .resources-list a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        .resources-list a:hover {
-            text-decoration: underline;
-        }
-        
-        .resources-list p {
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
-            color: #666;
-        }
-        
-        .student-work {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .project-card {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .project-img {
-            width: 100%;
-            height: 200px;
-            background-color: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #777;
-        }
-        
-        .project-info {
-            padding: 1.5rem;
-        }
-        
-        .project-title {
-            margin-bottom: 0.5rem;
-            color: var(--secondary-color);
-        }
-        
-        .student-name {
-            color: var(--primary-color);
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-        
-        .project-desc {
-            color: #666;
-            margin-bottom: 1rem;
+        .card p {
+            margin-bottom: var(--spacing-md);
+            flex: 1;
         }
         
         .btn {
             display: inline-block;
             background-color: var(--primary-color);
             color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--border-radius);
             text-decoration: none;
             transition: background-color 0.3s;
-        }
-        
-        .btn:hover {
-            background-color: #2980b9;
-        }
-        
-        .small-btn {
-            padding: 0.25rem 0.5rem;
-            font-size: 0.85rem;
-        }
-        
-        .reset-btn {
-            background-color: #95a5a6;
-        }
-        
-        .reset-btn:hover {
-            background-color: #7f8c8d;
-        }
-        
-        .submit-btn {
-            background-color: var(--accent-color);
-        }
-        
-        .submit-btn:hover {
-            background-color: #c0392b;
-        }
-        
-        .section-hidden {
-            display: none;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .form-group input[type="text"],
-        .form-group input[type="date"],
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-            font-family: inherit;
-        }
-        
-        .form-group input[type="file"] {
-            padding: 0.5rem 0;
-        }
-        
-        .file-instructions {
-            font-size: 0.85rem;
-            color: #777;
-            margin-top: 0.5rem;
-        }
-        
-        .checkbox-group {
-            display: flex;
-            align-items: flex-start;
-        }
-        
-        .checkbox-group input {
-            margin-top: 0.3rem;
-            margin-right: 0.5rem;
-        }
-        
-        .form-actions {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        
-        .submission-form {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
-        }
-        
-        .submission-history {
-            margin-bottom: 2rem;
-        }
-        
-        .submission-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-        }
-        
-        .submission-table th,
-        .submission-table td {
-            padding: 0.75rem 1rem;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .submission-table th {
-            background-color: var(--primary-color);
-            color: white;
-            font-weight: 500;
-        }
-        
-        .submission-table tr:nth-child(even) {
-            background-color: rgba(0, 0, 0, 0.02);
-        }
-        
-        .status-graded {
-            color: var(--success-color);
-            font-weight: 500;
-        }
-        
-        .status-pending {
-            color: var(--warning-color);
-            font-weight: 500;
-        }
-        
-        .submission-guidelines {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .submission-guidelines ul {
-            margin-left: 1.5rem;
-            margin-top: 0.5rem;
-        }
-        
-        .submission-guidelines li {
-            margin-bottom: 0.5rem;
-        }
-
-        footer {
-            background-color: var(--secondary-color);
-            color: white;
             text-align: center;
-            padding: 2rem 0;
-            margin-top: 2rem;
+            margin-top: auto;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover, .btn:focus {
+            background-color: var(--primary-dark);
+            outline: none;
+        }
+        
+        footer {
+            padding: var(--spacing-xl) 0;
+            margin-top: auto;
         }
         
         .contact-info {
-            margin-bottom: 1rem;
+            margin-bottom: var(--spacing-md);
         }
         
-        .social-links a {
+        footer a {
             color: white;
-            margin: 0 0.5rem;
-            font-size: 1.2rem;
+            text-decoration: underline;
+            transition: opacity 0.3s;
+        }
+        
+        footer a:hover, footer a:focus {
+            opacity: 0.8;
             text-decoration: none;
-        }
-        .banner {
-            width: 100%;
-            text-align: center;
-            background-color: var(--secondary-color);
-        }
-        .banner img {
-            max-width: 100%;
-            height: auto;
-            cursor: pointer; /* Shows a hand cursor when hovering over the image */
         }
         
         @media (max-width: 768px) {
             nav ul {
-            display: flex;
-            list-style: none;
-            width: 100%;
-            justify-content: center;
+                flex-direction: column;
+                align-items: center;
             }
             
             nav li {
-                padding: 0.5rem;
-            }
-            
-            .course-title {
-                font-size: 1.8rem;
-            }
-            
-            .course-subtitle {
-                font-size: 1rem;
-            }
-            .banner {
+                padding: var(--spacing-sm);
                 width: 100%;
                 text-align: center;
-                background-color: var(--secondary-color);
             }
-            .banner img {
-                max-width: 100%;
-                height: auto;
-                cursor: pointer; /* Shows a hand cursor when hovering over the image */
+            
+            main {
+                padding: var(--spacing-md);
+            }
+            
+            .course-intro {
+                font-size: 1rem;
+                text-align: left;
+            }
+            
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            nav, .btn {
+                display: none;
+            }
+            
+            body {
+                background-color: white;
+                color: black;
+            }
+            
+            .card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                break-inside: avoid;
+            }
+            
+            .card-header {
+                background-color: #f5f5f5;
+                color: black;
+            }
+            
+            footer {
+                background-color: white;
+                color: black;
+                border-top: 1px solid #ddd;
+            }
+            
+            footer a {
+                color: black;
             }
         }
     </style>
@@ -411,16 +258,15 @@
 <body>
     <header>
         <div class="banner">
-            <a href="index.html">
-                <img src="brummerm.github.io/Images/banner.png" alt="Website Banner">
-                
+            <a href="index.html" aria-label="Go to homepage">
+                <img src="brummerm.github.io/Images/banner.png" alt="Computer Science Course Banner" width="1200" height="200" loading="lazy">
             </a>
         </div>
     </header>
     
-    <nav>
+    <nav aria-label="Main navigation">
         <ul>
-            <li><a href="index.html" class="home-btn">Home</a></li>
+            <li><a href="index.html" class="home-btn" aria-current="page">Home</a></li>
             <li><a href="Syllabus.html" class="syllabus-btn">Syllabus</a></li>
             <li><a href="Resources.html" class="resources-btn">Resources</a></li>
             <li><a href="showcase.html" class="submitwork-btn">Showcase</a></li>
@@ -430,37 +276,92 @@
     
     <main>
         <section id="home">
-            <h3>Choose the class period you have for the google classroom code.</h3>
+            <h1 class="course-intro">This course provides an introduction to computer science, programming, and technology. You'll learn fundamental programming concepts, problem-solving strategies, and develop skills that will prepare you for more advanced computing courses.</h1>
+            
             <div class="container">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>4th Period</h3>
-                    </div>
+                <article class="card">
+                    <header class="card-header">
+                        <h2>Course Overview</h2>
+                    </header>
                     <div class="card-body">
-                        <p>Google Classroom Code: <strong>pwocufq</strong></p>
-                        <a href="https://classroom.google.com/c/NzI1NTkzODAzNzk2?cjc=pwocufq" class="btn">Join Class</a>
+                        <p>Introduces computer science concepts, programming languages, hardware fundamentals, and applied technology skills.</p>
+                        <a href="Syllabus.html" class="btn">View Syllabus</a>
                     </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h3>7th Period</h3>
-                    </div>
+                </article>
+                
+                <article class="card">
+                    <header class="card-header">
+                        <h2>Learning Resources</h2>
+                    </header>
                     <div class="card-body">
-                        <p>Google Classroom Code: <strong>nazyoap</strong></p>
-                        <a href="https://classroom.google.com/c/NzI1NTkzNDYzODYx?cjc=nazyoap" class="btn">Join Class</a>
+                        <p>Access tutorials, readings, coding exercises, and additional materials to support your learning throughout the course.</p>
+                        <a href="Resources.html" class="btn">Browse Resources</a>
                     </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h3>8th Period</h3>
-                    </div>
+                </article>
+                
+                <article class="card">
+                    <header class="card-header">
+                        <h2>Past Work</h2>
+                    </header>
                     <div class="card-body">
-                        <p>Google Classroom Code: <strong>pofui2f</strong></p>
-                        <a href="https://classroom.google.com/c/NzM2OTM4MDAwNTkx?cjc=pofui2f" class="btn">Join Class</a>
+                        <p>See previous student work to get inspiration for your own projects and assignments.</p>
+                        <a href="showcase.html" class="btn">Showcase</a>
                     </div>
-                </div>
+                </article>
+
+                <article class="card">
+                    <header class="card-header">
+                        <h2>Coding Help</h2>
+                    </header>
+                    <div class="card-body">
+                        <p>Need some tips on how to code? Check out these examples to improve your programming skills.</p>
+                        <a href="coding-examples.html" class="btn">Examples</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <header class="card-header">
+                        <h2>Google Classroom</h2>
+                    </header>
+                    <div class="card-body">
+                        <p>Join your class to access assignments, resources, and communicate with your instructor and peers.</p>
+                        <a href="classcodes.html" class="btn">Class Codes</a>
+                    </div>
+                </article>
             </div>
         </section>
     </main>
+    
+    <footer>
+        <div class="contact-info">
+            <p>Instructor: Mr. Brummer</p>
+            <p>Email: <a href="mailto:mbrummer@schools.nyc.gov">mbrummer@schools.nyc.gov</a></p>
+        </div>
+        <p>&copy; <span id="current-year">2025</span> Computer Science</p>
+    </footer>
+    
+    <script>
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Add active class to current page
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('nav a');
+            
+            navLinks.forEach(link => {
+                const linkHref = link.getAttribute('href');
+                if (linkHref === currentPage) {
+                    link.classList.add('active');
+                    link.setAttribute('aria-current', 'page');
+                }
+            });
+            
+            // Add lazy loading to images that may be added dynamically
+            document.querySelectorAll('img:not([loading])').forEach(img => {
+                img.setAttribute('loading', 'lazy');
+            });
+        });
+    </script>
 </body>
 </html>

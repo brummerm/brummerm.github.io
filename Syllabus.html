@@ -3,14 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Computer Science</title>
+    <meta name="description" content="Computer Science course syllabus with topics, required materials, and grading information">
+    <title>Computer Science - Course Syllabus</title>
     <style>
         :root {
             --primary-color: #3498db;
+            --primary-dark: #2980b9;
             --secondary-color: #2c3e50;
             --accent-color: #e74c3c;
+            --accent-dark: #c0392b;
             --light-color: #ecf0f1;
             --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #fff;
+            --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 5px 15px rgba(0, 0, 0, 0.2);
+            --transition: all 0.3s ease;
+            --border-radius: 8px;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 0.75rem;
+            --spacing: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
         }
         
         * {
@@ -22,406 +36,246 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: var(--dark-color);
+            color: var(--text-color);
             background-color: var(--light-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         
+        /* Header and Navigation */
         header {
             background-color: var(--secondary-color);
-            color: white;
-            padding: 1rem 0;
+            color: var(--text-light);
+            padding: var(--spacing) 0;
             text-align: center;
         }
         
-        .course-title {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+        .banner {
+            width: 100%;
+            text-align: center;
+            background-color: var(--secondary-color);
         }
         
-        .course-subtitle {
-            font-size: 1.2rem;
-            font-weight: normal;
+        .banner img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
         }
         
         nav {
             background-color: var(--primary-color);
-            display: flex;
-            justify-content: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
         nav ul {
             display: flex;
             list-style: none;
-            width: 100%;
             justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+            flex-wrap: wrap;
         }
         
         nav li {
-            padding: 1rem;
+            padding: var(--spacing);
         }
         
         nav a {
-            color: white;
+            color: var(--text-light);
             text-decoration: none;
             font-weight: bold;
-            padding: 0.5rem 1rem;
+            padding: var(--spacing-xs) var(--spacing);
             border-radius: 4px;
             transition: background-color 0.3s;
         }
         
-        nav a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+        nav a:hover, 
+        nav a:focus {
+            background-color: rgba(255, 255, 255, 0.2);
+            outline: none;
         }
         
         .active {
             background-color: rgba(255, 255, 255, 0.2);
         }
         
+        /* Main Content */
         main {
+            flex: 1;
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
-        }
-        
-        section {
-            margin-bottom: 3rem;
+            padding: var(--spacing-lg);
         }
         
         h2 {
             color: var(--secondary-color);
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
+            margin-bottom: var(--spacing);
+            padding-bottom: var(--spacing-xs);
             border-bottom: 2px solid var(--primary-color);
         }
         
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
+        .page-title {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
         }
         
-        .card {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: transform 0.3s;
-            flex: 1 1 300px;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .card-header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 1rem;
-        }
-        
-        .card-body {
-            padding: 1.5rem;
-        }
-        
-        .card h3 {
-            margin-bottom: 0.5rem;
-        }
-        
-        .resources-list, .syllabus-list {
+        /* Syllabus Content */
+        .syllabus-list {
             list-style: none;
+            margin-bottom: var(--spacing-lg);
         }
         
-        .resources-list li, .syllabus-list li {
-            margin-bottom: 1rem;
-            padding: 1rem;
+        .syllabus-list li {
+            margin-bottom: var(--spacing);
+            padding: var(--spacing-md);
             background-color: white;
-            border-radius: 4px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
         }
         
-        .resources-list a {
+        .syllabus-list li:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .syllabus-list h2 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        .syllabus-list h3 {
             color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
+            margin: var(--spacing-sm) 0;
+            font-size: 1.25rem;
         }
         
-        .resources-list a:hover {
-            text-decoration: underline;
+        .syllabus-list p {
+            margin-left: var(--spacing);
+            margin-bottom: var(--spacing-xs);
+            color: var(--text-color);
         }
         
-        .resources-list p {
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
-            color: #666;
+        .syllabus-topic {
+            border-top: 1px solid #eee;
+            padding-top: var(--spacing-sm);
+            margin-top: var(--spacing-sm);
         }
         
-        .student-work {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
+        .topic-content {
+            padding-left: var(--spacing);
         }
         
-        .project-card {
+        .grading-section {
             background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: var(--spacing-lg);
         }
         
-        .project-img {
-            width: 100%;
-            height: 200px;
-            background-color: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #777;
-        }
-        
-        .project-info {
-            padding: 1.5rem;
-        }
-        
-        .project-title {
-            margin-bottom: 0.5rem;
-            color: var(--secondary-color);
-        }
-        
-        .student-name {
+        .grading-section h3 {
             color: var(--primary-color);
-            font-weight: 500;
-            margin-bottom: 1rem;
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.25rem;
         }
         
-        .project-desc {
-            color: #666;
-            margin-bottom: 1rem;
+        .grading-section ul {
+            list-style: disc;
+            margin-left: var(--spacing-lg);
         }
         
-        .btn {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            text-decoration: none;
-            transition: background-color 0.3s;
+        .grading-section li {
+            margin-bottom: var(--spacing-xs);
         }
         
-        .btn:hover {
-            background-color: #2980b9;
-        }
-        
-        .small-btn {
-            padding: 0.25rem 0.5rem;
-            font-size: 0.85rem;
-        }
-        
-        .reset-btn {
-            background-color: #95a5a6;
-        }
-        
-        .reset-btn:hover {
-            background-color: #7f8c8d;
-        }
-        
-        .submit-btn {
-            background-color: var(--accent-color);
-        }
-        
-        .submit-btn:hover {
-            background-color: #c0392b;
-        }
-        
-        .section-hidden {
-            display: none;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .form-group input[type="text"],
-        .form-group input[type="date"],
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-            font-family: inherit;
-        }
-        
-        .form-group input[type="file"] {
-            padding: 0.5rem 0;
-        }
-        
-        .file-instructions {
-            font-size: 0.85rem;
-            color: #777;
-            margin-top: 0.5rem;
-        }
-        
-        .checkbox-group {
-            display: flex;
-            align-items: flex-start;
-        }
-        
-        .checkbox-group input {
-            margin-top: 0.3rem;
-            margin-right: 0.5rem;
-        }
-        
-        .form-actions {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        
-        .submission-form {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
-        }
-        
-        .submission-history {
-            margin-bottom: 2rem;
-        }
-        
-        .submission-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-        }
-        
-        .submission-table th,
-        .submission-table td {
-            padding: 0.75rem 1rem;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .submission-table th {
-            background-color: var(--primary-color);
-            color: white;
-            font-weight: 500;
-        }
-        
-        .submission-table tr:nth-child(even) {
-            background-color: rgba(0, 0, 0, 0.02);
-        }
-        
-        .status-graded {
-            color: var(--success-color);
-            font-weight: 500;
-        }
-        
-        .status-pending {
-            color: var(--warning-color);
-            font-weight: 500;
-        }
-        
-        .submission-guidelines {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .submission-guidelines ul {
-            margin-left: 1.5rem;
-            margin-top: 0.5rem;
-        }
-        
-        .submission-guidelines li {
-            margin-bottom: 0.5rem;
-        }
-
+        /* Footer */
         footer {
             background-color: var(--secondary-color);
-            color: white;
+            color: var(--text-light);
             text-align: center;
-            padding: 2rem 0;
-            margin-top: 2rem;
+            padding: var(--spacing-lg) 0;
+            margin-top: auto;
         }
         
         .contact-info {
-            margin-bottom: 1rem;
+            margin-bottom: var(--spacing);
         }
         
-        .social-links a {
-            color: white;
-            margin: 0 0.5rem;
-            font-size: 1.2rem;
+        footer a {
+            color: var(--text-light);
+            text-decoration: underline;
+            transition: var(--transition);
+        }
+        
+        footer a:hover,
+        footer a:focus {
             text-decoration: none;
+            outline: none;
         }
-        .banner {
-            width: 100%;
-            text-align: center;
-            background-color: var(--secondary-color);
-        }
-        .banner img {
-            max-width: 100%;
-            height: auto;
-            cursor: pointer; /* Shows a hand cursor when hovering over the image */
-        }
-
+        
+        /* Responsive Design */
         @media (max-width: 768px) {
+            main {
+                padding: var(--spacing);
+            }
+            
+            .syllabus-list li {
+                padding: var(--spacing);
+            }
+            
             nav ul {
-                display: flex;
-                list-style: none;
-                width: 100%;
-                justify-content: center;
+                flex-direction: column;
+                align-items: center;
             }
             
             nav li {
-                padding: 0.5rem;
-            }
-            
-            .course-title {
-                font-size: 1.8rem;
-            }
-            
-            .course-subtitle {
-                font-size: 1rem;
-            }
-            .banner {
+                padding: var(--spacing-xs);
                 width: 100%;
                 text-align: center;
-                background-color: var(--secondary-color);
             }
-            .banner img {
-                max-width: 100%;
-                height: auto;
-                cursor: pointer; /* Shows a hand cursor when hovering over the image */
-            }
+        }
+        
+        /* Accessibility Enhancements */
+        :focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+        
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
     </style>
 </head>
 <body>
     <header>
         <div class="banner">
-            <a href="index.html">
-                <img src="https://brummerm.github.io/Images/banner.png" alt="Website Banner">
-                
+            <a href="index.html" aria-label="Go to homepage">
+                <img src="https://brummerm.github.io/Images/banner.png" alt="Computer Science Course Banner" width="1200" height="200" loading="lazy">
             </a>
         </div>
     </header>
     
-    <nav>
+    <nav aria-label="Main navigation">
         <ul>
             <li><a href="index.html" class="home-btn">Home</a></li>
-            <li><a href="Syllabus.html" class="syllabus-btn">Syllabus</a></li>
+            <li><a href="Syllabus.html" class="syllabus-btn" aria-current="page">Syllabus</a></li>
             <li><a href="Resources.html" class="resources-btn">Resources</a></li>
             <li><a href="showcase.html" class="submitwork-btn">Showcase</a></li>
             <li><a href="coding-examples.html" class="examples-btn">Coding Examples</a></li>
@@ -429,67 +283,82 @@
     </nav>
     
     <main>
-            <h2 style="text-align: center;">Course Syllabus</h2>
+        <h2 class="page-title">Course Syllabus</h2>
+        
+        <ul class="syllabus-list">
+            <li>
+                <h2>Required Materials</h2>
+                <p>-Laptop</p>
+                <p>-Laptop charger</p>   
+            </li>
             
-            <ul class="syllabus-list">
-                <li>
-                    <h2>Required Materials</h2>
-                    <h3>-Laptop</h3>
-                    <h3>-Laptop charger</h3>   
-                </li>
-                
-                <li>
-                    <h3>Computing Fundamentals</h3>
+            <li class="syllabus-topic">
+                <h3>Computing Fundamentals</h3>
+                <div class="topic-content">
                     <p>-Google Docs</p>
                     <p>-Google Sheets</p>
                     <p>-Google Slides</p>
-                </li>
+                </div>
+            </li>
 
-                <li>
-                    <h3>Introduction to Python Programming</h3>
+            <li class="syllabus-topic">
+                <h3>Introduction to Python Programming</h3>
+                <div class="topic-content">
                     <p>-Computing Fundamentals</p>
                     <p>-Python Foundations</p>
                     <p>-Data Structures</p>
                     <p>-Functions</p>
-                </li>
+                </div>
+            </li>
 
-                <li>
-                    <h3>Introduction to HTML</h3>
+            <li class="syllabus-topic">
+                <h3>Introduction to HTML</h3>
+                <div class="topic-content">
                     <p>-HTML Document Structure</p>
                     <p>-Website Elements</p>
                     <p>-PROJECT: Interactive Website</p>
-                </li>
-                
-                <li>
-                    <h3>Circuitry Fundamentals</h3>
+                </div>
+            </li>
+            
+            <li class="syllabus-topic">
+                <h3>Circuitry Fundamentals</h3>
+                <div class="topic-content">
                     <p>-Electricity</p>
                     <p>-Circuit Diagrams and Schematics</p>
                     <p>-Circuit Components</p>
                     <p>-Arduino</p>
-                </li>
+                </div>
+            </li>
 
-                <li>
-                    <h3>Cryptography</h3>
+            <li class="syllabus-topic">
+                <h3>Cryptography</h3>
+                <div class="topic-content">
                     <p>-History of Cryptography</p>
                     <p>-Basic Ciphers</p>
                     <p>-Encryption/Decryption</p>
-                </li>
+                </div>
+            </li>
 
-                <li>
-                    <h3>3D Modeling</h3>
+            <li class="syllabus-topic">
+                <h3>3D Modeling</h3>
+                <div class="topic-content">
                     <p>-Figuro Interface and Navigation</p>
                     <p>-Shapes and Transformations</p>
-                    <p>-3d Printing</p>
-                </li>
+                    <p>-3D Printing</p>
+                </div>
+            </li>
 
-                <li>
-                    <h3>Computer Repair</h3>
+            <li class="syllabus-topic">
+                <h3>Computer Repair</h3>
+                <div class="topic-content">
                     <p>-PC Components</p>
                     <p>-Assembly and Disassembly</p>
                     <p>-Operating Systems</p>
-                </li>
-            </ul>
-            
+                </div>
+            </li>
+        </ul>
+        
+        <div class="grading-section">
             <h3>Grading</h3>
             <ul>
                 <li>Weekly Assignments: 50%</li>
@@ -497,44 +366,32 @@
                 <li>Final Project: 10%</li>
                 <li>Participation: 30%</li>
             </ul>
-        </section>
+        </div>
     </main>
 
     <footer>
         <div class="contact-info">
             <p>Instructor: Mr. Brummer</p>
-            <p>Email: mbrummer@schools.nyc.gov</p>
+            <p>Email: <a href="mailto:mbrummer@schools.nyc.gov">mbrummer@schools.nyc.gov</a></p>
         </div>
-        <p>&copy; 2025 Computer Science</p>
+        <p>&copy; <span id="current-year">2025</span> Computer Science</p>
     </footer>
     
     <script>
-        // Navigation functionality
-        const navLinks = document.querySelectorAll('.nav-link');
-        const sections = document.querySelectorAll('section');
+        // Set current year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
         
-        // Show home section by default
-        document.getElementById('home').classList.remove('section-hidden');
-        
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                
-                // Remove active class from all links
-                navLinks.forEach(link => link.classList.remove('active'));
-                
-                // Add active class to clicked link
-                link.classList.add('active');
-                
-                // Hide all sections
-                sections.forEach(section => section.classList.add('section-hidden'));
-                
-                // Show corresponding section
-                const sectionId = link.getAttribute('data-section');
-                document.getElementById(sectionId).classList.remove('section-hidden');
-                
-                // Scroll to top
-                window.scrollTo(0, 0);
+        // Add active class to current page in navigation
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('nav a');
+            
+            navLinks.forEach(link => {
+                const linkHref = link.getAttribute('href');
+                if (linkHref === currentPage) {
+                    link.classList.add('active');
+                    link.setAttribute('aria-current', 'page');
+                }
             });
         });
     </script>

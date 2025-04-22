@@ -3,14 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Computer Science</title>
+    <meta name="description" content="Student project showcase for Computer Science class">
+    <title>Computer Science - Student Showcase</title>
     <style>
         :root {
             --primary-color: #3498db;
+            --primary-dark: #2980b9;
             --secondary-color: #2c3e50;
             --accent-color: #e74c3c;
+            --accent-dark: #c0392b;
             --light-color: #ecf0f1;
             --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #fff;
+            --card-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --card-shadow-hover: 0 5px 15px rgba(0, 0, 0, 0.15);
+            --transition-standard: all 0.3s ease;
+            --border-radius: 8px;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 0.75rem;
+            --spacing: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
         }
         
         * {
@@ -22,269 +36,180 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: var(--dark-color);
+            color: var(--text-color);
             background-color: var(--light-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         
+        /* Header and Navigation */
         header {
             background-color: var(--secondary-color);
-            color: white;
-            padding: 1rem 0;
+            color: var(--text-light);
+            padding: var(--spacing) 0;
             text-align: center;
         }
         
-        .course-title {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+        .banner {
+            width: 100%;
+            text-align: center;
+            background-color: var(--secondary-color);
         }
         
-        .course-subtitle {
-            font-size: 1.2rem;
-            font-weight: normal;
+        .banner img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
         }
         
         nav {
             background-color: var(--primary-color);
-            display: flex;
-            justify-content: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
         nav ul {
             display: flex;
             list-style: none;
-            width: 100%;
             justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+            flex-wrap: wrap;
         }
         
         nav li {
-            padding: 1rem;
+            padding: var(--spacing);
         }
         
         nav a {
-            color: white;
+            color: var(--text-light);
             text-decoration: none;
             font-weight: bold;
-            padding: 0.5rem 1rem;
+            padding: var(--spacing-xs) var(--spacing);
             border-radius: 4px;
             transition: background-color 0.3s;
         }
         
-        nav a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+        nav a:hover, 
+        nav a:focus {
+            background-color: rgba(255, 255, 255, 0.2);
+            outline: none;
         }
         
         .active {
             background-color: rgba(255, 255, 255, 0.2);
         }
         
+        /* Main Content */
         main {
+            flex: 1;
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
-        }
-        
-        section {
-            margin-bottom: 3rem;
-        }
-        
-        h2 {
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--primary-color);
+            padding: var(--spacing-lg);
         }
         
         .container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-        
-        .card {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: transform 0.3s;
-            flex: 1 1 300px;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .card-header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 1rem;
-        }
-        
-        .card-body {
-            padding: 1.5rem;
-        }
-        
-        .card h3 {
-            margin-bottom: 0.5rem;
-        }
-        .student-work {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .project-card {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .project-img {
             width: 100%;
-            height: 200px;
-            background-color: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #777;
         }
         
-        .project-info {
-            padding: 1.5rem;
-        }
-        
-        .project-title {
-            margin-bottom: 0.5rem;
-            color: var(--secondary-color);
-        }
-        
-        .student-name {
-            color: var(--primary-color);
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-        
-        .project-desc {
-            color: #666;
-            margin-bottom: 1rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-        
-        .btn:hover {
-            background-color: #2980b9;
-        }
-        
-        .small-btn {
-            padding: 0.25rem 0.5rem;
-            font-size: 0.85rem;
-        }
-        
-        .reset-btn {
-            background-color: #95a5a6;
-        }
-        
-        .reset-btn:hover {
-            background-color: #7f8c8d;
-        }
-        .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-        }
-        
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 600px;
-        }
-        
+        /* Filter and Search */
         .filter-bar {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 1rem;
-            margin: 2rem 0;
-            padding: 1rem;
+            gap: var(--spacing);
+            margin: var(--spacing-lg) 0;
+            padding: var(--spacing);
             background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
         }
         
         .filter-option {
-            padding: 0.5rem 1rem;
+            padding: var(--spacing-xs) var(--spacing);
             background-color: #e0e0e0;
             border-radius: 20px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition-standard);
+            border: none;
+            font-size: 1rem;
         }
         
-        .filter-option:hover {
+        .filter-option:hover,
+        .filter-option:focus {
             background-color: #d0d0d0;
+            outline: none;
         }
         
         .filter-option.active {
             background-color: var(--primary-color);
-            color: white;
+            color: var(--text-light);
         }
         
         .search-box {
             display: flex;
             width: 100%;
-            max-width: 400px;
-            margin: 1rem auto;
+            max-width: 500px;
+            margin: var(--spacing-md) auto;
         }
         
         .search-box input {
             flex: 1;
-            padding: 0.75rem;
+            padding: var(--spacing-sm);
             border: 1px solid #ddd;
-            border-radius: 4px 0 0 4px;
+            border-radius: var(--border-radius) 0 0 var(--border-radius);
             font-size: 1rem;
         }
         
-        .search-box button {
-            padding: 0.75rem 1rem;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary-color);
         }
         
+        .search-box button {
+            padding: var(--spacing-sm) var(--spacing);
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            border: none;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            cursor: pointer;
+            transition: var(--transition-standard);
+        }
+        
+        .search-box button:hover,
+        .search-box button:focus {
+            background-color: var(--primary-dark);
+            outline: none;
+        }
+        
+        /* Projects Grid */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
+            gap: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
         }
         
         .project-card {
             background-color: white;
-            border-radius: 8px;
+            border-radius: var(--border-radius);
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         
-        .project-card:hover {
+        .project-card:hover,
+        .project-card:focus-within {
             transform: translateY(-5px);
+            box-shadow: var(--card-shadow-hover);
         }
         
         .project-image {
@@ -299,39 +224,43 @@
             top: 10px;
             right: 10px;
             background-color: var(--accent-color);
-            color: white;
-            padding: 0.25rem 0.5rem;
+            color: var(--text-light);
+            padding: var(--spacing-xs) var(--spacing-sm);
             border-radius: 4px;
             font-size: 0.8rem;
         }
         
         .project-info {
-            padding: 1.5rem;
+            padding: var(--spacing-md);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
         
         .project-title {
             font-size: 1.25rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: var(--spacing-xs);
             color: var(--secondary-color);
         }
         
         .project-student {
             font-size: 0.9rem;
             color: #666;
-            margin-bottom: 1rem;
+            margin-bottom: var(--spacing);
         }
         
         .project-description {
             font-size: 0.95rem;
             color: #444;
-            margin-bottom: 1rem;
+            margin-bottom: var(--spacing);
+            flex: 1;
         }
         
         .project-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
+            gap: var(--spacing-xs);
+            margin-bottom: var(--spacing);
         }
         
         .tag {
@@ -345,16 +274,24 @@
         .project-actions {
             display: flex;
             justify-content: space-between;
+            margin-top: auto;
         }
         
         .project-view {
-            padding: 0.5rem 1rem;
+            padding: var(--spacing-xs) var(--spacing);
             background-color: var(--primary-color);
-            color: white;
+            color: var(--text-light);
             border: none;
             border-radius: 4px;
             cursor: pointer;
             font-size: 0.9rem;
+            transition: var(--transition-standard);
+        }
+        
+        .project-view:hover,
+        .project-view:focus {
+            background-color: var(--primary-dark);
+            outline: none;
         }
         
         .project-like {
@@ -366,100 +303,116 @@
             color: #666;
             cursor: pointer;
             font-size: 0.9rem;
+            transition: var(--transition-standard);
         }
         
+        .project-like:hover,
+        .project-like:focus {
+            color: var(--accent-color);
+            outline: none;
+        }
+        
+        .project-like[data-liked="true"] {
+            color: var(--accent-color);
+        }
+        
+        /* Empty State */
         .empty-state {
             text-align: center;
-            padding: 3rem;
+            padding: var(--spacing-lg);
             color: #666;
             display: none;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
         }
         
         .empty-state h3 {
             font-size: 1.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: var(--spacing);
         }
         
+        /* Footer */
         footer {
-            background-color: var(--dark-bg);
-            color: var(--text-light);
-            padding: 2rem 0;
-            text-align: center;
-            margin-top: 2rem;
-        }
-        
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .footer-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-        
-        .footer-links a {
-            color: var(--text-light);
-            text-decoration: none;
-        }
-        
-        .footer-links a:hover {
-            text-decoration: underline;
-        }
-        
-        .copyright {
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        .banner {
-            width: 100%;
-            text-align: center;
             background-color: var(--secondary-color);
-        }
-        .banner img {
-            max-width: 100%;
-            height: auto;
-            cursor: pointer; /* Shows a hand cursor when hovering over the image */
+            color: var(--text-light);
+            text-align: center;
+            padding: var(--spacing-lg) 0;
+            margin-top: auto;
         }
         
+        .contact-info {
+            margin-bottom: var(--spacing);
+        }
+        
+        footer a {
+            color: var(--text-light);
+            text-decoration: underline;
+            transition: var(--transition-standard);
+        }
+        
+        footer a:hover,
+        footer a:focus {
+            text-decoration: none;
+            outline: none;
+        }
+        
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
+            main {
+                padding: var(--spacing);
             }
             
             .projects-grid {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: var(--spacing);
             }
-            .banner {
+            
+            .filter-bar {
+                padding: var(--spacing-sm);
+                gap: var(--spacing-sm);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                padding: var(--spacing-xs);
                 width: 100%;
                 text-align: center;
-                background-color: var(--secondary-color);
-            }
-            .banner img {
-                max-width: 100%;
-                height: auto;
-                cursor: pointer; /* Shows a hand cursor when hovering over the image */
-            }
-            nav ul {
-                display: flex;
-                list-style: none;
-                width: 100%;
-                justify-content: center;
             }
         }
         
         @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 1.75rem;
-            }
-            
             .filter-bar {
                 flex-direction: column;
-                align-items: center;
+                align-items: stretch;
             }
+            
+            .filter-option {
+                text-align: center;
+                border-radius: 4px;
+            }
+        }
+        
+        /* Accessibility Enhancements */
+        :focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+        
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
     </style>
 </head>
@@ -467,40 +420,39 @@
 <body>
     <header>
         <div class="banner">
-            <a href="index.html">
-                <img src="brummerm.github.io/Images/banner.png" alt="Website Banner">
-                
+            <a href="index.html" aria-label="Go to homepage">
+                <img src="brummerm.github.io/Images/banner.png" alt="Computer Science Course Banner" width="1200" height="200" loading="lazy">
             </a>
         </div>
     </header>
     
-    <nav>
+    <nav aria-label="Main navigation">
         <ul>
             <li><a href="index.html" class="home-btn">Home</a></li>
             <li><a href="Syllabus.html" class="syllabus-btn">Syllabus</a></li>
             <li><a href="Resources.html" class="resources-btn">Resources</a></li>
-            <li><a href="showcase.html" class="submitwork-btn">Showcase</a></li>
+            <li><a href="showcase.html" class="submitwork-btn" aria-current="page">Showcase</a></li>
             <li><a href="coding-examples.html" class="examples-btn">Coding Examples</a></li>
         </ul>
     </nav>
 
     <main class="container">
-        <div class="filter-bar">
-            <div class="filter-option active" data-category="all">All Projects</div>
-            <div class="filter-option" data-category="programming">Programming</div>
-            <div class="filter-option" data-category="cryptography">Cryptography</div>
-            <div class="filter-option" data-category="3dmodel">3d Modeling</div>
-            <div class="filter-option" data-category="computers">Computer Repair</div>
-            <div class="filter-option" data-category="electronics">Electronics</div>
-        
+        <div class="filter-bar" role="toolbar" aria-label="Project filters">
+            <button class="filter-option active" data-category="all">All Projects</button>
+            <button class="filter-option" data-category="programming">Programming</button>
+            <button class="filter-option" data-category="cryptography">Cryptography</button>
+            <button class="filter-option" data-category="3dmodel">3D Modeling</button>
+            <button class="filter-option" data-category="computers">Computer Repair</button>
+            <button class="filter-option" data-category="electronics">Electronics</button>
         </div>
         
-        <div class="search-box">
+        <div class="search-box" role="search">
+            <label for="search-input" class="visually-hidden">Search projects</label>
             <input type="text" id="search-input" placeholder="Search projects...">
-            <button id="search-button">Search</button>
+            <button id="search-button" aria-label="Search">Search</button>
         </div>
         
-        <div class="projects-grid" id="projects-container">
+        <div class="projects-grid" id="projects-container" aria-live="polite">
             <!-- Project cards will be dynamically loaded here -->
         </div>
         
@@ -510,148 +462,272 @@
         </div>
     </main>
     
-<footer>
-    <div class="contact-info">
-        <p>Instructor: Mr. Brummer</p>
-        <p>Email: mbrummer@schools.nyc.gov</p>
-    </div>
-    <p>&copy; 2025 Computer Science</p>
-</footer>
+    <footer>
+        <div class="contact-info">
+            <p>Instructor: Mr. Brummer</p>
+            <p>Email: <a href="mailto:mbrummer@schools.nyc.gov">mbrummer@schools.nyc.gov</a></p>
+        </div>
+        <p>&copy; <span id="current-year">2025</span> Computer Science</p>
+    </footer>
 
-<script>
-    // Sample project data
-    const projectsData = [
-        {
-            id: 1,
-            title: "Typographic Poster Series",
-            student: "Emma Johnson",
-            description: "A series of typographic posters exploring visual hierarchy and composition with expressive typography.",
-            category: "design",
-            image: "/api/placeholder/400/320",
-            tags: ["Typography", "Poster Design", "Print"],
-        },
-        {
-            id: 2,
-            title: "E-commerce Website",
-            student: "Michael Chen",
-            description: "Fully responsive e-commerce website with shopping cart functionality built with HTML, CSS, and JavaScript.",
-            category: "web",
-            image: "/api/placeholder/400/320",
-            tags: ["HTML/CSS", "JavaScript", "UI/UX"],
-        }
+    <script>
+        // Set current year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
         
-    ];
+        // Sample project data - expanded with more realistic examples
+        const projectsData = [
+            {
+                id: 1,
+                title: "Python Weather App",
+                student: "Emma Johnson",
+                description: "A Python application that fetches and displays real-time weather data using APIs and presents it in a user-friendly interface.",
+                category: "programming",
+                image: "/api/placeholder/400/320",
+                tags: ["Python", "APIs", "GUI"],
+                likes: 15
+            },
+            {
+                id: 2,
+                title: "E-commerce Website",
+                student: "Michael Chen",
+                description: "Fully responsive e-commerce website with shopping cart functionality built with HTML, CSS, and JavaScript.",
+                category: "programming",
+                image: "/api/placeholder/400/320",
+                tags: ["HTML/CSS", "JavaScript", "UI/UX"],
+                likes: 23
+            },
+            {
+                id: 3,
+                title: "Caesar Cipher Decoder",
+                student: "Alex Smith",
+                description: "An application that can encode and decode messages using the Caesar cipher with adjustable shift values.",
+                category: "cryptography",
+                image: "/api/placeholder/400/320",
+                tags: ["Cryptography", "Python", "Algorithms"],
+                likes: 8
+            },
+            {
+                id: 4,
+                title: "3D Printed Phone Stand",
+                student: "Sarah Williams",
+                description: "A custom-designed phone stand optimized for stability and adjustable viewing angles, created using CAD software.",
+                category: "3dmodel",
+                image: "/api/placeholder/400/320",
+                tags: ["3D Printing", "CAD", "Product Design"],
+                likes: 19
+            },
+            {
+                id: 5,
+                title: "Arduino Smart Plant Monitor",
+                student: "David Lee",
+                description: "An Arduino-based system that monitors soil moisture, light, and temperature for houseplants, with LED indicators and alerts.",
+                category: "electronics",
+                image: "/api/placeholder/400/320",
+                tags: ["Arduino", "Sensors", "IoT"],
+                likes: 31
+            },
+            {
+                id: 6,
+                title: "Gaming PC Build Guide",
+                student: "Jessica Brown",
+                description: "Comprehensive documentation of a custom gaming PC build, including component selection, assembly, and optimization.",
+                category: "computers",
+                image: "/api/placeholder/400/320",
+                tags: ["PC Building", "Hardware", "Documentation"],
+                likes: 27
+            }
+        ];
 
-    // DOM Elements
-    const projectsContainer = document.getElementById('projects-container');
-    const filterOptions = document.querySelectorAll('.filter-option');
-    const searchInput = document.getElementById('search-input');
-    const searchButton = document.getElementById('search-button');
-    const emptyState = document.getElementById('empty-state');
+        // DOM Elements
+        const projectsContainer = document.getElementById('projects-container');
+        const filterOptions = document.querySelectorAll('.filter-option');
+        const searchInput = document.getElementById('search-input');
+        const searchButton = document.getElementById('search-button');
+        const emptyState = document.getElementById('empty-state');
 
-    // Current filter and search state
-    let currentCategory = 'all';
-    let searchQuery = '';
+        // Current filter and search state
+        let currentCategory = 'all';
+        let searchQuery = '';
+        // Store liked projects in localStorage
+        const likedProjects = JSON.parse(localStorage.getItem('likedProjects')) || [];
 
-    // Initialize the page
-    document.addEventListener('DOMContentLoaded', () => {
-        renderProjects();
-        setupEventListeners();
-    });
-
-    // Set up event listeners
-    function setupEventListeners() {
-        // Filter options
-        filterOptions.forEach(option => {
-            option.addEventListener('click', () => {
-                filterOptions.forEach(opt => opt.classList.remove('active'));
-                option.classList.add('active');
-                currentCategory = option.getAttribute('data-category');
-                renderProjects();
-            });
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProjects();
+            setupEventListeners();
+            highlightCurrentPage();
         });
 
-        // Search functionality
-        searchButton.addEventListener('click', () => {
+        // Set up event listeners
+        function setupEventListeners() {
+            // Filter options
+            filterOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    filterOptions.forEach(opt => opt.classList.remove('active'));
+                    option.classList.add('active');
+                    currentCategory = option.getAttribute('data-category');
+                    renderProjects();
+                });
+                
+                // Add keyboard support
+                option.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        option.click();
+                    }
+                });
+            });
+
+            // Search functionality
+            searchButton.addEventListener('click', performSearch);
+
+            searchInput.addEventListener('keyup', (e) => {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+        }
+        
+        // Perform search
+        function performSearch() {
             searchQuery = searchInput.value.trim().toLowerCase();
             renderProjects();
-        });
+        }
 
-        searchInput.addEventListener('keyup', (e) => {
-            if (e.key === 'Enter') {
-                searchQuery = searchInput.value.trim().toLowerCase();
-                renderProjects();
+        // Render projects based on current filters
+        function renderProjects() {
+            projectsContainer.innerHTML = '';
+            
+            const filteredProjects = projectsData.filter(project => {
+                const matchesCategory = currentCategory === 'all' || project.category === currentCategory;
+                const matchesSearch = searchQuery === '' || 
+                                    project.title.toLowerCase().includes(searchQuery) ||
+                                    project.student.toLowerCase().includes(searchQuery) ||
+                                    project.description.toLowerCase().includes(searchQuery) ||
+                                    (project.tags && project.tags.some(tag => tag.toLowerCase().includes(searchQuery)));
+                
+                return matchesCategory && matchesSearch;
+            });
+            
+            if (filteredProjects.length === 0) {
+                emptyState.style.display = 'block';
+                // Announce for screen readers
+                projectsContainer.setAttribute('aria-label', 'No projects found matching your criteria');
+            } else {
+                emptyState.style.display = 'none';
+                projectsContainer.setAttribute('aria-label', `Showing ${filteredProjects.length} projects`);
+                
+                filteredProjects.forEach(project => {
+                    const projectCard = createProjectCard(project);
+                    projectsContainer.appendChild(projectCard);
+                });
             }
-        });
-    }
+        }
 
-    // Render projects based on current filters
-    function renderProjects() {
-        projectsContainer.innerHTML = '';
-        
-        const filteredProjects = projectsData.filter(project => {
-            const matchesCategory = currentCategory === 'all' || project.category === currentCategory;
-            const matchesSearch = searchQuery === '' || 
-                                 project.title.toLowerCase().includes(searchQuery) ||
-                                 project.student.toLowerCase().includes(searchQuery) ||
-                                 project.description.toLowerCase().includes(searchQuery) ||
-                                 project.tags.some(tag => tag.toLowerCase().includes(searchQuery));
+        // Create a project card element
+        function createProjectCard(project) {
+            const card = document.createElement('article');
+            card.className = 'project-card';
+            card.setAttribute('tabindex', '0');
             
-            return matchesCategory && matchesSearch;
-        });
-        
-        if (filteredProjects.length === 0) {
-            emptyState.style.display = 'block';
-        } else {
-            emptyState.style.display = 'none';
+            const isLiked = likedProjects.includes(project.id);
             
-            filteredProjects.forEach(project => {
-                const projectCard = createProjectCard(project);
-                projectsContainer.appendChild(projectCard);
+            card.innerHTML = `
+                <div class="project-image" style="background-image: url('${project.image}')" aria-hidden="true">
+                    <div class="project-category">${capitalizeFirstLetter(project.category)}</div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">${project.title}</h3>
+                    <p class="project-student">By ${project.student}</p>
+                    <p class="project-description">${project.description}</p>
+                    <div class="project-tags" aria-label="Project tags">
+                        ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                    </div>
+                    <div class="project-actions">
+                        <button class="project-view" aria-label="View ${project.title} project">View Project</button>
+                        <button class="project-like" data-id="${project.id}" data-liked="${isLiked}" aria-label="${isLiked ? 'Unlike' : 'Like'} this project. Current likes: ${project.likes}">
+                            <span aria-hidden="true">❤</span> <span class="like-count">${project.likes}</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            // Add view project functionality
+            const viewButton = card.querySelector('.project-view');
+            viewButton.addEventListener('click', () => {
+                viewProject(project);
+            });
+            
+            // Add like functionality
+            const likeButton = card.querySelector('.project-like');
+            likeButton.addEventListener('click', () => {
+                toggleLike(likeButton, project);
+            });
+            
+            return card;
+        }
+        
+        // View project function
+        function viewProject(project) {
+            // In a real application, this would navigate to a detailed view page
+            // For now, just show an alert with project details
+            alert(`Viewing project: ${project.title} by ${project.student}\n\nCategory: ${capitalizeFirstLetter(project.category)}\nTags: ${project.tags.join(', ')}`);
+        }
+        
+        // Toggle like function
+        function toggleLike(button, project) {
+            const isLiked = button.getAttribute('data-liked') === 'true';
+            const likeCount = button.querySelector('.like-count');
+            const projectId = parseInt(button.getAttribute('data-id'));
+            
+            if (isLiked) {
+                // Unlike project
+                project.likes--;
+                button.setAttribute('data-liked', 'false');
+                button.setAttribute('aria-label', `Like this project. Current likes: ${project.likes}`);
+                
+                // Remove from localStorage
+                const index = likedProjects.indexOf(projectId);
+                if (index > -1) {
+                    likedProjects.splice(index, 1);
+                }
+            } else {
+                // Like project
+                project.likes++;
+                button.setAttribute('data-liked', 'true');
+                button.setAttribute('aria-label', `Unlike this project. Current likes: ${project.likes}`);
+                
+                // Add to localStorage
+                if (!likedProjects.includes(projectId)) {
+                    likedProjects.push(projectId);
+                }
+            }
+            
+            // Update like count
+            likeCount.textContent = project.likes;
+            
+            // Save to localStorage
+            localStorage.setItem('likedProjects', JSON.stringify(likedProjects));
+        }
+
+        // Highlight current page in navigation
+        function highlightCurrentPage() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('nav a');
+            
+            navLinks.forEach(link => {
+                const linkHref = link.getAttribute('href');
+                if (linkHref === currentPage) {
+                    link.classList.add('active');
+                    link.setAttribute('aria-current', 'page');
+                }
             });
         }
-    }
 
-    // Create a project card element
-    function createProjectCard(project) {
-        const card = document.createElement('div');
-        card.className = 'project-card';
-        
-        card.innerHTML = `
-            <div class="project-image" style="background-image: url('${project.image}')">
-                <div class="project-category">${capitalizeFirstLetter(project.category)}</div>
-            </div>
-            <div class="project-info">
-                <h3 class="project-title">${project.title}</h3>
-                <p class="project-student">By ${project.student}</p>
-                <p class="project-description">${project.description}</p>
-                <div class="project-tags">
-                    ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                </div>
-                <div class="project-actions">
-                    <button class="project-view">View Project</button>
-                    <button class="project-like" data-id="${project.id}">
-                        <span>❤</span> <span class="like-count">${project.likes}</span>
-                    </button>
-                </div>
-            </div>
-        `;
-        
-        
-        // Add view project functionality
-        const viewButton = card.querySelector('.project-view');
-        viewButton.addEventListener('click', () => {
-            alert(`Viewing project: ${project.title} by ${project.student}`);
-            // In a real application, this would navigate to a detailed view page
-        });
-        
-        return card;
-    }
-
-    // Helper function to capitalize first letter
-    function capitalizeFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    }
-</script>
+        // Helper function to capitalize first letter
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+    </script>
 </body>
 </html>
