@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Resources for Computer Science class including tutorials, tools, and support materials">
+    <meta name="description" content="Computer Science course resources, tools, and learning materials">
     <title>Computer Science Class Resources</title>
     <style>
         :root {
@@ -15,10 +15,11 @@
             --light-color: #ecf0f1;
             --dark-color: #2c3e50;
             --text-color: #333;
-            --shadow: 0 2px 5px rgba(0,0,0,0.1);
-            --shadow-hover: 0 5px 15px rgba(0,0,0,0.1);
+            --text-light: #fff;
+            --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 5px 15px rgba(0, 0, 0, 0.15);
             --transition: all 0.3s ease;
-            --radius: 8px;
+            --border-radius: 8px;
             --spacing-xs: 0.5rem;
             --spacing-sm: 0.75rem;
             --spacing: 1rem;
@@ -45,7 +46,7 @@
         /* Header and Navigation */
         header {
             background-color: var(--secondary-color);
-            color: white;
+            color: var(--text-light);
             text-align: center;
             padding: var(--spacing-md) 0;
             box-shadow: var(--shadow);
@@ -78,6 +79,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0;
+            flex-wrap: wrap;
         }
         
         nav li {
@@ -85,7 +87,7 @@
         }
         
         nav a {
-            color: white;
+            color: var(--text-light);
             text-decoration: none;
             font-weight: bold;
             padding: var(--spacing-xs) var(--spacing);
@@ -93,9 +95,9 @@
             transition: background-color 0.3s;
         }
         
-        nav a:hover, nav a:focus {
+        nav a:hover, 
+        nav a:focus {
             background-color: rgba(255, 255, 255, 0.2);
-            text-decoration: none;
             outline: none;
         }
         
@@ -115,21 +117,6 @@
             padding: var(--spacing-lg);
         }
         
-        h2, h3 {
-            color: var(--secondary-color);
-        }
-        
-        h2 {
-            margin-bottom: var(--spacing);
-            padding-bottom: var(--spacing-xs);
-            border-bottom: 2px solid var(--primary-color);
-        }
-        
-        h3 {
-            margin-top: var(--spacing);
-            margin-bottom: var(--spacing-xs);
-        }
-        
         /* Search */
         .search-bar {
             display: flex;
@@ -141,7 +128,7 @@
             flex: 1;
             padding: var(--spacing);
             border: 1px solid #ddd;
-            border-radius: var(--radius) 0 0 var(--radius);
+            border-radius: var(--border-radius) 0 0 var(--border-radius);
             font-size: 1rem;
             transition: border-color 0.3s;
         }
@@ -152,11 +139,11 @@
         }
         
         .search-bar button {
-            background-color: var(--secondary-color);
-            color: white;
-            border: none;
             padding: 0 var(--spacing-lg);
-            border-radius: 0 var(--radius) var(--radius) 0;
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            border: none;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
             cursor: pointer;
             transition: var(--transition);
         }
@@ -224,7 +211,7 @@
         /* Cards */
         .card {
             background-color: white;
-            border-radius: var(--radius);
+            border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             padding: var(--spacing-lg);
             margin-bottom: var(--spacing-lg);
@@ -236,14 +223,44 @@
             box-shadow: var(--shadow-hover);
         }
         
+        .card h2 {
+            color: var(--secondary-color);
+            margin-bottom: var(--spacing);
+            padding-bottom: var(--spacing-xs);
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
         .card h3 {
             color: var(--primary-color);
-            margin-top: 0;
-            border-bottom: 2px solid var(--light-color);
+            margin: var(--spacing) 0 var(--spacing-sm);
             padding-bottom: var(--spacing-xs);
+            border-bottom: 1px solid var(--light-color);
         }
         
         /* Resource links */
+        .resource-list {
+            list-style: none;
+            margin: var(--spacing-sm) 0 var(--spacing-md);
+        }
+        
+        .resource-list li {
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .resource-list a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .resource-list a:hover,
+        .resource-list a:focus {
+            color: var(--primary-dark);
+            text-decoration: underline;
+            outline: none;
+        }
+        
         .resource-link {
             display: block;
             padding: var(--spacing-sm) 0;
@@ -253,7 +270,7 @@
             border-bottom: 1px solid #eee;
         }
         
-        .resource-link:hover, 
+        .resource-link:hover,
         .resource-link:focus {
             color: var(--accent-color);
             padding-left: 5px;
@@ -282,21 +299,26 @@
         }
         
         /* Tools section */
+        .section {
+            margin-bottom: var(--spacing-lg);
+        }
+        
         .tools-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: var(--spacing-lg);
-            margin: var(--spacing-md) 0 var(--spacing-lg);
+            gap: var(--spacing-md);
+            margin-top: var(--spacing);
         }
         
         .tool-card {
             background-color: white;
-            border-radius: var(--radius);
+            border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             padding: var(--spacing-md);
             transition: var(--transition);
             display: flex;
             flex-direction: column;
+            height: 100%;
         }
         
         .tool-card:hover {
@@ -307,60 +329,40 @@
         .tool-card h3 {
             color: var(--primary-color);
             margin-top: 0;
-            margin-bottom: var(--spacing-xs);
+            margin-bottom: var(--spacing-sm);
+            border-bottom: 1px solid var(--light-color);
+            padding-bottom: var(--spacing-xs);
         }
         
         .tool-card p {
             margin-bottom: var(--spacing);
-            flex-grow: 1;
+            flex: 1;
         }
         
         .tool-link {
             display: inline-block;
             background-color: var(--primary-color);
-            color: white;
+            color: var(--text-light);
             text-decoration: none;
             padding: var(--spacing-xs) var(--spacing);
             border-radius: 4px;
             transition: var(--transition);
             text-align: center;
+            margin-top: auto;
         }
         
-        .tool-link:hover, 
+        .tool-link:hover,
         .tool-link:focus {
             background-color: var(--primary-dark);
-            text-decoration: none;
             outline: none;
-        }
-        
-        /* Resource lists */
-        .resource-list {
-            list-style: none;
-            margin: var(--spacing) 0;
-        }
-        
-        .resource-list li {
-            margin-bottom: var(--spacing);
-        }
-        
-        .resource-list a {
-            color: var(--primary-color);
+            color: var(--text-light);
             text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-        
-        .resource-list a:hover, 
-        .resource-list a:focus {
-            color: var(--primary-dark);
-            text-decoration: underline;
-            outline: none;
         }
         
         /* Accordion */
         .accordion {
             background-color: white;
-            border-radius: var(--radius);
+            border-radius: var(--border-radius);
             margin-bottom: var(--spacing);
             overflow: hidden;
             box-shadow: var(--shadow);
@@ -384,6 +386,7 @@
             margin: 0;
             font-size: 1.125rem;
             color: var(--primary-color);
+            border-bottom: none;
         }
         
         .accordion-content {
@@ -398,9 +401,14 @@
             padding: var(--spacing-lg);
         }
         
+        .accordion-indicator {
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+        
         .recommended-badge {
             background-color: var(--accent-color);
-            color: white;
+            color: var(--text-light);
             padding: 3px 8px;
             border-radius: 4px;
             font-size: 0.75em;
@@ -410,7 +418,7 @@
         /* Footer */
         footer {
             background-color: var(--secondary-color);
-            color: white;
+            color: var(--text-light);
             text-align: center;
             padding: var(--spacing-lg) 0;
             margin-top: auto;
@@ -421,17 +429,15 @@
         }
         
         footer a {
-            color: white;
+            color: var(--text-light);
             text-decoration: underline;
+            transition: var(--transition);
         }
         
-        footer a:hover {
+        footer a:hover,
+        footer a:focus {
             text-decoration: none;
-        }
-        
-        /* Section dividers */
-        .section {
-            margin-bottom: var(--spacing-lg);
+            outline: none;
         }
         
         /* Responsive design */
@@ -447,6 +453,7 @@
             .tab-btn {
                 width: 100%;
                 text-align: left;
+                padding: var(--spacing);
                 border-bottom: 1px solid #ddd;
             }
             
@@ -460,27 +467,29 @@
             
             .search-bar {
                 flex-direction: column;
+                width: 100%;
             }
             
             .search-bar input,
             .search-bar button {
                 width: 100%;
-                border-radius: var(--radius);
+                border-radius: var(--border-radius);
                 margin-bottom: var(--spacing-xs);
             }
             
+            .tools-container {
+                grid-template-columns: 1fr;
+            }
+            
             nav ul {
-                flex-wrap: wrap;
+                flex-direction: column;
+                align-items: center;
             }
             
             nav li {
                 padding: var(--spacing-xs);
                 width: 100%;
                 text-align: center;
-            }
-            
-            .tools-container {
-                grid-template-columns: 1fr;
             }
         }
         
@@ -539,11 +548,148 @@
             <div class="tabs" role="tablist">
                 <button class="tab-btn active" id="tab-textbooks" data-tab="textbooks" role="tab" aria-selected="true" aria-controls="textbooks-panel">Support Materials</button>
                 <button class="tab-btn" id="tab-lectures" data-tab="lectures" role="tab" aria-selected="false" aria-controls="lectures-panel">Lecture Materials</button>
-                <button class="tab-btn" id="tab-tools">
+                <button class="tab-btn" id="tab-tools" data-tab="tools" role="tab" aria-selected="false" aria-controls="tools-panel">Tools & Software</button>
+                <button class="tab-btn" id="tab-help" data-tab="help" role="tab" aria-selected="false" aria-controls="help-panel">Help & Support</button>
+            </div>
+            
+            <!-- Support Materials Tab -->
+            <div id="textbooks-panel" class="tab-content active" role="tabpanel" aria-labelledby="tab-textbooks">
+                <!-- Python Resources -->
+                <div class="card">
+                    <h2>Python</h2>
+                    <h3>Online Courses and Videos</h3>
+                    <ul class="resource-list">
+                        <li><a href="https://www.edx.org/course/cs50s-introduction-to-programming-with-python" target="_blank" rel="noopener noreferrer"><strong>CS50's Introduction to Programming with Python</strong></a> - Harvard's introduction course</li>
+                        <li><a href="https://www.coursera.org/specializations/python" target="_blank" rel="noopener noreferrer"><strong>Python for Everybody</strong></a> by Dr. Charles Severance on Coursera</li>
+                        <li><a href="https://www.youtube.com/user/schafer5" target="_blank" rel="noopener noreferrer"><strong>Corey Schafer's Python Tutorials</strong></a> - Excellent YouTube series covering Python fundamentals to advanced topics</li>
+                        <li><a href="https://www.youtube.com/playlist?list=PLi01XoE8jYohWFPpC17Z-wWhPOSuh8Er-" target="_blank" rel="noopener noreferrer"><strong>Socratica's Python Programming Tutorials</strong></a> - Clear, concise tutorials</li>
+                        <li><a href="https://realpython.com/" target="_blank" rel="noopener noreferrer"><strong>Real Python</strong></a> - Website with extensive tutorials and videos</li>
+                    </ul>
+
+                    <h3>Interactive Learning Platforms</h3>
+                    <ul class="resource-list">
+                        <li><a href="https://leetcode.com/problemset/" target="_blank" rel="noopener noreferrer"><strong>LeetCode Python Problems</strong></a> - For programming practice</li>
+                        <li><a href="https://exercism.io/tracks/python" target="_blank" rel="noopener noreferrer"><strong>Exercism.io</strong></a> - Mentored programming challenges</li>
+                        <li><a href="https://www.kaggle.com/learn/python" target="_blank" rel="noopener noreferrer"><strong>Kaggle Python Courses</strong></a> - Data-focused Python training</li>
+                    </ul>
+                </div>
+
+                <!-- HTML Resources -->
+                <div class="card">
+                    <h2>HTML and Web Development Resources</h2>
+                    <h3>Online Courses and Videos</h3>
+                    <ul class="resource-list">
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML" target="_blank" rel="noopener noreferrer"><strong>MDN Web Docs: HTML Basics</strong></a> - Industry-standard reference</li>
+                        <li><a href="https://www.freecodecamp.org/learn" target="_blank" rel="noopener noreferrer"><strong>freeCodeCamp's Responsive Web Design Certification</strong></a> - Comprehensive free curriculum</li>
+                        <li><a href="https://www.youtube.com/watch?v=UB1O30fR-EE" target="_blank" rel="noopener noreferrer"><strong>Traversy Media HTML Crash Course</strong></a> - Excellent introduction</li>
+                        <li><a href="https://www.youtube.com/playlist?list=PL4cUxeGkcC9ivBf_eKCPIAYXWzLlPAm6G" target="_blank" rel="noopener noreferrer"><strong>Net Ninja HTML & CSS Playlist</strong></a> - Step-by-step tutorials</li>
+                        <li><a href="https://www.udacity.com/course/intro-to-html-and-css--ud001" target="_blank" rel="noopener noreferrer"><strong>Udacity's Intro to HTML and CSS</strong></a> - Free foundational course</li>
+                    </ul>
+
+                    <h3>Interactive Learning Platforms</h3>
+                    <ul class="resource-list">
+                        <li><a href="https://www.w3schools.com/html/" target="_blank" rel="noopener noreferrer"><strong>W3Schools HTML Tutorial</strong></a> - Interactive examples and testing environment</li>
+                        <li><a href="https://www.khanacademy.org/computing/computer-programming/html-css" target="_blank" rel="noopener noreferrer"><strong>Khan Academy HTML/CSS Course</strong></a> - Guided lessons with exercises</li>
+                        <li><a href="https://www.codecademy.com/learn/learn-html" target="_blank" rel="noopener noreferrer"><strong>Codecademy HTML Course</strong></a> - Interactive learning</li>
+                    </ul>
+                </div>
+
+                <!-- Circuit Design Resources -->
+                <div class="card">
+                    <h2>Circuit Design Resources</h2>
+                    <h3>Online Courses and Videos</h3>
+                    <ul class="resource-list">
+                        <li><a href="https://www.khanacademy.org/science/electrical-engineering" target="_blank" rel="noopener noreferrer"><strong>Khan Academy Electrical Engineering</strong></a> - Foundational concepts</li>
+                        <li><a href="https://www.allaboutcircuits.com/education/" target="_blank" rel="noopener noreferrer"><strong>All About Circuits Tutorials</strong></a> - Free online textbook and resources</li>
+                        <li><a href="https://www.youtube.com/user/eaterbc" target="_blank" rel="noopener noreferrer"><strong>Ben Eater's Digital Electronics Videos</strong></a> - Detailed explanations of digital logic</li>
+                        <li><a href="https://www.circuitbasics.com/" target="_blank" rel="noopener noreferrer"><strong>Circuit Basics Tutorials</strong></a> - Practical projects and explanations</li>
+                        <li><a href="https://www.youtube.com/user/greatscottlab" target="_blank" rel="noopener noreferrer"><strong>GreatScott! YouTube Channel</strong></a> - DIY electronics projects</li>
+                    </ul>
+
+                    <h3>Interactive Learning Platforms</h3>
+                    <ul class="resource-list">
+                        <li><a href="https://www.tinkercad.com/circuits" target="_blank" rel="noopener noreferrer"><strong>TinkerCAD Circuits</strong></a> - Browser-based circuit simulation</li>
+                        <li><a href="https://www.falstad.com/circuit/" target="_blank" rel="noopener noreferrer"><strong>Falstad Circuit Simulator</strong></a> - Interactive circuit visualization</li>
+                        <li><a href="https://learn.sparkfun.com/" target="_blank" rel="noopener noreferrer"><strong>SparkFun Learn</strong></a> - Project-based tutorials</li>
+                        <li><a href="https://learn.adafruit.com/" target="_blank" rel="noopener noreferrer"><strong>Adafruit Learning System</strong></a> - Tutorials and projects</li>
+                    </ul>
+                </div>
+
+                <!-- Cryptography Resources -->
+                <div class="card">
+                    <h2>Cryptography Resources</h2>
+                    <h3>Online Courses and Videos</h3>
+                    <ul class="resource-list">
+                        <li><a href="https://www.coursera.org/learn/crypto" target="_blank" rel="noopener noreferrer"><strong>Cryptography I by Stanford University</strong></a> on Coursera</li>
+                        <li><a href="https://www.youtube.com/channel/UC1usFRN4LCMcfIV7UjHNuQg/videos" target="_blank" rel="noopener noreferrer"><strong>Introduction to Cryptography by Christof Paar</strong></a> - University lecture series</li>
+                        <li><a href="https://www.khanacademy.org/computing/computer-science/cryptography" target="_blank" rel="noopener noreferrer"><strong>Khan Academy Cryptography</strong></a> - Basics explained well</li>
+                        <li><a href="https://www.youtube.com/user/Computerphile" target="_blank" rel="noopener noreferrer"><strong>Computerphile Cryptography Videos</strong></a> - Clear explanations of complex topics</li>
+                        <li><a href="https://www.youtube.com/channel/UClcE-kVhqyiHCcjYwcpfj9w" target="_blank" rel="noopener noreferrer"><strong>LiveOverflow's Security Videos</strong></a> - Application of cryptography in security</li>
+                    </ul>
+
+                    <h3>Interactive Learning Platforms</h3>
+                    <ul class="resource-list">
+                        <li><a href="https://www.cryptool.org/" target="_blank" rel="noopener noreferrer"><strong>CrypTool</strong></a> - Educational tools for cryptography</li>
+                        <li><a href="https://cryptohack.org/" target="_blank" rel="noopener noreferrer"><strong>Cryptohack</strong></a> - Learning platform with cryptography challenges</li>
+                        <li><a href="https://cryptopals.com/" target="_blank" rel="noopener noreferrer"><strong>CryptoPals Crypto Challenges</strong></a> - Programming challenges for cryptography</li>
+                        <li><a href="https://tryhackme.com/" target="_blank" rel="noopener noreferrer"><strong>TryHackMe Crypto Rooms</strong></a> - Applied cryptography in cybersecurity context</li>
+                    </ul>
+                </div>
+
+                <!-- 3D Modeling Resources -->
+                <div class="card">
+                    <h2>3D Modeling and Printing Resources</h2>
+                    <h3>Online Courses and Videos</h3>
+                    <ul class="resource-list">
+                        <li><a href="https://www.youtube.com/user/TheMakersMuse" target="_blank" rel="noopener noreferrer"><strong>Maker's Muse YouTube Channel</strong></a> - 3D printing techniques and tips</li>
+                        <li><a href="https://forums.sketchup.com/t/learning-the-basics/256510" target="_blank" rel="noopener noreferrer"><strong>Sketchup</strong></a> - Sketchup Community forums</li>
+                        <li><a href="https://www.youtube.com/channel/UC_7aK9PpYTqt08ERh1MewlQ" target="_blank" rel="noopener noreferrer"><strong>3D Printing Nerd</strong></a> - Hardware reviews and printing techniques</li>
+                        <li><a href="https://www.youtube.com/thesketchupessentials" target="_blank" rel="noopener noreferrer"><strong>Sketchup</strong></a> - Sketchup Tutorial Videos</li>
+                    </ul>
+
+                    <h3>Interactive Learning Platforms</h3>
+                    <ul class="resource-list">
+                        <li><a href="https://www.thingiverse.com/" target="_blank" rel="noopener noreferrer"><strong>Thingiverse</strong></a> - Repository of 3D models and community</li>
+                        <li><a href="https://www.printables.com/" target="_blank" rel="noopener noreferrer"><strong>Printables</strong></a> - Project repository with guides</li>
+                    </ul>
+                </div>
+
+                <!-- Computer Repair Resources -->
+                <div class="card">
+                    <h2>Computer Repair and Maintenance Resources</h2>
+                    <h3>Online Courses and Videos</h3>
+                    <ul class="resource-list">
+                        <li><a href="https://www.professormesser.com/free-a-plus-training/a-plus-videos/" target="_blank" rel="noopener noreferrer"><strong>Professor Messer's CompTIA A+ Videos</strong></a> - Free comprehensive training</li>
+                        <li><a href="https://www.youtube.com/user/elithecomputerguy" target="_blank" rel="noopener noreferrer"><strong>Eli the Computer Guy</strong></a> - Practical IT and repair tutorials</li>
+                        <li><a href="https://www.youtube.com/user/LinusTechTips" target="_blank" rel="noopener noreferrer"><strong>Linus Tech Tips</strong></a> - Hardware reviews and build guides</li>
+                    </ul>
+
+                    <h3>Interactive Learning Platforms</h3>
+                    <ul class="resource-list">
+                        <li><a href="https://www.ifixit.com/Guide" target="_blank" rel="noopener noreferrer"><strong>iFixit Repair Guides</strong></a> - Detailed teardown and repair instructions</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Lecture Materials Tab -->
+            <div id="lectures-panel" class="tab-content" role="tabpanel" aria-labelledby="tab-lectures">
+                <div class="card">
+                    <h2>Lecture Slides & Notes</h2>
+                    <a href="https://docs.google.com/presentation/d/1odu3tlAzBts3JZTm31ifpZLob9i4yTWovXAchT5IZn4/edit?usp=sharing" class="resource-link" target="_blank" rel="noopener noreferrer">
+                        <i aria-hidden="true">📝</i> Full Computer Science Slide Deck
+                        <div class="resource-meta">
+                            <span class="tag">Google Slides</span> <span class="tag">Slides</span> <span class="tag">Notes</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Tools & Software Tab -->
+            <div id="tools-panel" class="tab-content" role="tabpanel" aria-labelledby="tab-tools">
                 <h2>Digital Tools</h2>
                 <p>These digital tools have been carefully selected to enhance your learning experience and help you with various academic tasks.</p>
                 
-                <div id="cs-tools" class="section">
+                <section id="cs-tools" class="section">
                     <h3>Computer Science & Programming Tools</h3>
                     <div class="tools-container">
                         <div class="tool-card">
@@ -564,9 +710,9 @@
                             <a href="https://codepen.io/pen/" class="tool-link" target="_blank" rel="noopener noreferrer">Open CodePen</a>
                         </div>
                     </div>
-                </div>
+                </section>
                 
-                <div id="cryptography" class="section">   
+                <section id="cryptography-tools" class="section">   
                     <h3>Cryptography & Code Tools</h3>
                     <div class="tools-container">
                         <div class="tool-card">
@@ -587,9 +733,9 @@
                             <a href="https://www.dcode.fr/" class="tool-link" target="_blank" rel="noopener noreferrer">Open Cryptography Toolkit</a>
                         </div>
                     </div>
-                </div>
+                </section>
                 
-                <div id="math" class="section">
+                <section id="math-tools" class="section">
                     <h3>Mathematics Tools</h3>
                     <div class="tools-container">
                         <div class="tool-card">
@@ -610,15 +756,15 @@
                             <a href="https://www.geogebra.org/" class="tool-link" target="_blank" rel="noopener noreferrer">Open GeoGebra</a>
                         </div>
                     </div>
-                </div>
+                </section>
             </div>
-            
+
             <!-- Help & Support Tab -->
             <div id="help-panel" class="tab-content" role="tabpanel" aria-labelledby="tab-help">
                 <div class="card">
                     <h2>Office Hours</h2>
                     <a href="#" class="resource-link">
-                        <i>👨‍🏫</i> Mr. Brummer
+                        <i aria-hidden="true">👨‍🏫</i> Mr. Brummer
                         <div class="resource-meta">
                             Monday & Wednesday, 12:20-1:00 PM | Location: Room 505
                         </div>
@@ -628,13 +774,13 @@
                 <div class="card">
                     <h2>Teaching Assistants</h2>
                     <a href="#" class="resource-link">
-                        <i>👨‍🎓</i> Arianna Polanco
+                        <i aria-hidden="true">👨‍🎓</i> Arianna Polanco
                         <div class="resource-meta">
                             Available during class periods
                         </div>
                     </a>
                     <a href="#" class="resource-link">
-                        <i>👩‍🎓</i> Demarcus Johnson
+                        <i aria-hidden="true">👩‍🎓</i> Demarcus Johnson
                         <div class="resource-meta">
                             Available during class periods
                         </div>
@@ -644,13 +790,13 @@
                 <div class="card">
                     <h2>Additional Support</h2>
                     <a href="mailto:mbrummer@schools.nyc.gov" class="resource-link">
-                        <i>📧</i> Email Support
+                        <i aria-hidden="true">📧</i> Email Support
                         <div class="resource-meta">
                             mbrummer@schools.nyc.gov | Response within 24 hours
                         </div>
                     </a>
                     <a href="#" class="resource-link">
-                        <i>🏫</i> Computer Science Peer Tutoring
+                        <i aria-hidden="true">🏫</i> Computer Science Peer Tutoring
                         <div class="resource-meta">
                             Mon, Tues, Thurs, 3:30 PM-4:30 PM | Location: Room 130
                         </div>
@@ -673,9 +819,12 @@
         document.getElementById('current-year').textContent = new Date().getFullYear();
         
         // Tab switching functionality
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get DOM elements
             const tabButtons = document.querySelectorAll('.tab-btn');
             const tabContents = document.querySelectorAll('.tab-content');
+            const searchInput = document.getElementById('search-input');
+            const searchButton = document.getElementById('search-button');
             
             // Function to activate a tab
             function activateTab(tabId) {
@@ -708,8 +857,7 @@
                 button.addEventListener('keydown', (e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
                         e.preventDefault();
-                        const tabId = button.getAttribute('data-tab');
-                        activateTab(tabId);
+                        button.click();
                     }
                 });
             });
@@ -718,108 +866,90 @@
             const savedTab = sessionStorage.getItem('activeTab');
             if (savedTab && document.querySelector(`[data-tab="${savedTab}"]`)) {
                 activateTab(savedTab);
-            } else {
-                // Activate first tab by default
-                const firstTabId = tabButtons[0].getAttribute('data-tab');
-                activateTab(firstTabId);
             }
             
-            // Accordion functionality
+            // Accordion functionality (if needed in the future)
             const accordions = document.querySelectorAll('.accordion');
             accordions.forEach(accordion => {
                 const header = accordion.querySelector('.accordion-header');
-                header.addEventListener('click', () => {
-                    accordion.classList.toggle('active');
-                    const isExpanded = accordion.classList.contains('active');
-                    header.setAttribute('aria-expanded', isExpanded);
-                    
-                    // Find and update the indicator text if it exists
-                    const indicator = header.querySelector('.accordion-indicator');
-                    if (indicator) {
-                        indicator.textContent = isExpanded ? '−' : '+';
-                        indicator.setAttribute('aria-label', isExpanded ? 'Collapse section' : 'Expand section');
-                    }
-                });
-                
-                // Add keyboard support
-                header.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        header.click();
-                    }
-                });
-                
-                // Set initial ARIA attributes
-                header.setAttribute('aria-expanded', 'false');
-                header.setAttribute('role', 'button');
-                header.setAttribute('tabindex', '0');
-                
-                // Add indicator if not present
-                if (!header.querySelector('.accordion-indicator')) {
-                    const indicator = document.createElement('span');
-                    indicator.className = 'accordion-indicator';
-                    indicator.textContent = '+';
-                    indicator.setAttribute('aria-hidden', 'true');
-                    header.appendChild(indicator);
+                if (header) {
+                    header.addEventListener('click', () => {
+                        accordion.classList.toggle('active');
+                        const isExpanded = accordion.classList.contains('active');
+                        header.setAttribute('aria-expanded', isExpanded);
+                        
+                        // Find and update the indicator if it exists
+                        const indicator = header.querySelector('.accordion-indicator');
+                        if (indicator) {
+                            indicator.textContent = isExpanded ? '−' : '+';
+                            indicator.setAttribute('aria-label', isExpanded ? 'Collapse section' : 'Expand section');
+                        }
+                    });
                 }
             });
             
             // Search functionality
-            const searchInput = document.getElementById('search-input');
-            const searchButton = document.getElementById('search-button');
-            
             function performSearch() {
                 const searchTerm = searchInput.value.toLowerCase().trim();
+                const allLinks = document.querySelectorAll('.resource-link, .tool-link, .resource-list a');
+                const allCards = document.querySelectorAll('.card, .tool-card');
                 
-                // If search term is empty, show all content
+                // Skip search if term is empty
                 if (searchTerm === '') {
-                    document.querySelectorAll('.card, .resource-link, .tool-card').forEach(item => {
-                        item.style.display = '';
+                    allLinks.forEach(link => {
+                        link.style.display = '';
+                    });
+                    allCards.forEach(card => {
+                        card.style.display = '';
                     });
                     return;
                 }
                 
-                // Search in cards and resource links
-                document.querySelectorAll('.card').forEach(card => {
+                // Track which cards have matching content
+                const cardsWithMatches = new Set();
+                
+                // Check all links for matches
+                allLinks.forEach(link => {
+                    const text = link.textContent.toLowerCase();
+                    const linkParent = link.closest('.card, .tool-card');
+                    
+                    if (text.includes(searchTerm)) {
+                        link.style.display = '';
+                        if (linkParent) {
+                            cardsWithMatches.add(linkParent);
+                        }
+                    } else {
+                        link.style.display = 'none';
+                    }
+                });
+                
+                // Show/hide cards based on search results
+                allCards.forEach(card => {
+                    // Check if the card itself contains the search term
                     const cardText = card.textContent.toLowerCase();
-                    const cardLinks = card.querySelectorAll('.resource-link, a');
-                    let cardVisible = cardText.includes(searchTerm);
+                    const cardHasMatch = cardText.includes(searchTerm) || cardsWithMatches.has(card);
                     
-                    // Check each link within the card
-                    let hasVisibleLinks = false;
-                    cardLinks.forEach(link => {
-                        const linkText = link.textContent.toLowerCase();
-                        const isVisible = linkText.includes(searchTerm);
-                        link.style.display = isVisible ? '' : 'none';
-                        if (isVisible) hasVisibleLinks = true;
-                    });
-                    
-                    // Show card if it contains the search term or has visible links
-                    card.style.display = (cardVisible || hasVisibleLinks) ? '' : 'none';
+                    card.style.display = cardHasMatch ? '' : 'none';
                 });
                 
-                // Search in tool cards
-                document.querySelectorAll('.tool-card').forEach(toolCard => {
-                    const toolText = toolCard.textContent.toLowerCase();
-                    toolCard.style.display = toolText.includes(searchTerm) ? '' : 'none';
-                });
-                
-                // Ensure we're showing the tab with results
-                let hasResults = false;
+                // Find which tabs have visible content
+                let activeTabFound = false;
                 tabContents.forEach(content => {
-                    const visibleCards = content.querySelectorAll('.card[style=""], .tool-card[style=""]');
-                    if (visibleCards.length > 0 && !hasResults) {
-                        // Activate this tab if it has results
+                    const hasVisibleCards = Array.from(content.querySelectorAll('.card, .tool-card'))
+                        .some(card => card.style.display !== 'none');
+                    
+                    if (hasVisibleCards && !activeTabFound) {
+                        // Switch to the first tab with results
                         const tabId = content.id.replace('-panel', '');
                         activateTab(tabId);
-                        hasResults = true;
+                        activeTabFound = true;
                     }
                 });
             }
             
             // Add search event listeners
             searchButton.addEventListener('click', performSearch);
-            searchInput.addEventListener('keyup', (e) => {
+            searchInput.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter') {
                     performSearch();
                 }
@@ -839,140 +969,4 @@
         });
     </script>
 </body>
-</html>" data-tab="tools" role="tab" aria-selected="false" aria-controls="tools-panel">Tools & Software</button>
-                <button class="tab-btn" id="tab-help" data-tab="help" role="tab" aria-selected="false" aria-controls="help-panel">Help & Support</button>
-            </div>
-            
-            <!-- Support Materials Tab -->
-            <div id="textbooks-panel" class="tab-content active" role="tabpanel" aria-labelledby="tab-textbooks">
-                <div class="card">
-                    <h2>Python</h2>
-                    <h3>Online Courses and Videos</h3>
-                    <ul class="resource-list">
-                        <li><a href="https://www.edx.org/course/cs50s-introduction-to-programming-with-python" target="_blank" rel="noopener noreferrer"><strong>CS50's Introduction to Programming with Python</strong></a> - Harvard's introduction course</li>
-                        <li><a href="https://www.coursera.org/specializations/python" target="_blank" rel="noopener noreferrer"><strong>Python for Everybody</strong></a> by Dr. Charles Severance on Coursera</li>
-                        <li><a href="https://www.youtube.com/user/schafer5" target="_blank" rel="noopener noreferrer"><strong>Corey Schafer's Python Tutorials</strong></a> - Excellent YouTube series covering Python fundamentals to advanced topics</li>
-                        <li><a href="https://www.youtube.com/playlist?list=PLi01XoE8jYohWFPpC17Z-wWhPOSuh8Er-" target="_blank" rel="noopener noreferrer"><strong>Socratica's Python Programming Tutorials</strong></a> - Clear, concise tutorials</li>
-                        <li><a href="https://realpython.com/" target="_blank" rel="noopener noreferrer"><strong>Real Python</strong></a> - Website with extensive tutorials and videos</li>
-                    </ul>
-
-                    <h3>Interactive Learning Platforms</h3>
-                    <ul class="resource-list">
-                        <li><a href="https://leetcode.com/problemset/" target="_blank" rel="noopener noreferrer"><strong>LeetCode Python Problems</strong></a> - For programming practice</li>
-                        <li><a href="https://exercism.io/tracks/python" target="_blank" rel="noopener noreferrer"><strong>Exercism.io</strong></a> - Mentored programming challenges</li>
-                        <li><a href="https://www.kaggle.com/learn/python" target="_blank" rel="noopener noreferrer"><strong>Kaggle Python Courses</strong></a> - Data-focused Python training</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h2>HTML and Web Development Resources</h2>
-
-                    <h3>Online Courses and Videos</h3>
-                    <ul class="resource-list">
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML" target="_blank" rel="noopener noreferrer"><strong>MDN Web Docs: HTML Basics</strong></a> - Industry-standard reference</li>
-                        <li><a href="https://www.freecodecamp.org/learn" target="_blank" rel="noopener noreferrer"><strong>freeCodeCamp's Responsive Web Design Certification</strong></a> - Comprehensive free curriculum</li>
-                        <li><a href="https://www.youtube.com/watch?v=UB1O30fR-EE" target="_blank" rel="noopener noreferrer"><strong>Traversy Media HTML Crash Course</strong></a> - Excellent introduction</li>
-                        <li><a href="https://www.youtube.com/playlist?list=PL4cUxeGkcC9ivBf_eKCPIAYXWzLlPAm6G" target="_blank" rel="noopener noreferrer"><strong>Net Ninja HTML & CSS Playlist</strong></a> - Step-by-step tutorials</li>
-                        <li><a href="https://www.udacity.com/course/intro-to-html-and-css--ud001" target="_blank" rel="noopener noreferrer"><strong>Udacity's Intro to HTML and CSS</strong></a> - Free foundational course</li>
-                    </ul>
-
-                    <h3>Interactive Learning Platforms</h3>
-                    <ul class="resource-list">
-                        <li><a href="https://www.w3schools.com/html/" target="_blank" rel="noopener noreferrer"><strong>W3Schools HTML Tutorial</strong></a> - Interactive examples and testing environment</li>
-                        <li><a href="https://www.khanacademy.org/computing/computer-programming/html-css" target="_blank" rel="noopener noreferrer"><strong>Khan Academy HTML/CSS Course</strong></a> - Guided lessons with exercises</li>
-                        <li><a href="https://www.codecademy.com/learn/learn-html" target="_blank" rel="noopener noreferrer"><strong>Codecademy HTML Course</strong></a> - Interactive learning</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h2>Circuit Design Resources</h2>
-                    
-                    <h3>Online Courses and Videos</h3>
-                    <ul class="resource-list">
-                        <li><a href="https://www.khanacademy.org/science/electrical-engineering" target="_blank" rel="noopener noreferrer"><strong>Khan Academy Electrical Engineering</strong></a> - Foundational concepts</li>
-                        <li><a href="https://www.allaboutcircuits.com/education/" target="_blank" rel="noopener noreferrer"><strong>All About Circuits Tutorials</strong></a> - Free online textbook and resources</li>
-                        <li><a href="https://www.youtube.com/user/eaterbc" target="_blank" rel="noopener noreferrer"><strong>Ben Eater's Digital Electronics Videos</strong></a> - Detailed explanations of digital logic</li>
-                        <li><a href="https://www.circuitbasics.com/" target="_blank" rel="noopener noreferrer"><strong>Circuit Basics Tutorials</strong></a> - Practical projects and explanations</li>
-                        <li><a href="https://www.youtube.com/user/greatscottlab" target="_blank" rel="noopener noreferrer"><strong>GreatScott! YouTube Channel</strong></a> - DIY electronics projects</li>
-                    </ul>
-
-                    <h3>Interactive Learning Platforms</h3>
-                    <ul class="resource-list">
-                        <li><a href="https://www.tinkercad.com/circuits" target="_blank" rel="noopener noreferrer"><strong>TinkerCAD Circuits</strong></a> - Browser-based circuit simulation</li>
-                        <li><a href="https://www.falstad.com/circuit/" target="_blank" rel="noopener noreferrer"><strong>Falstad Circuit Simulator</strong></a> - Interactive circuit visualization</li>
-                        <li><a href="https://learn.sparkfun.com/" target="_blank" rel="noopener noreferrer"><strong>SparkFun Learn</strong></a> - Project-based tutorials</li>
-                        <li><a href="https://learn.adafruit.com/" target="_blank" rel="noopener noreferrer"><strong>Adafruit Learning System</strong></a> - Tutorials and projects</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h2>Cryptography Resources</h2>
-                    
-                    <h3>Online Courses and Videos</h3>
-                    <ul class="resource-list">
-                        <li><a href="https://www.coursera.org/learn/crypto" target="_blank" rel="noopener noreferrer"><strong>Cryptography I by Stanford University</strong></a> on Coursera</li>
-                        <li><a href="https://www.youtube.com/channel/UC1usFRN4LCMcfIV7UjHNuQg/videos" target="_blank" rel="noopener noreferrer"><strong>Introduction to Cryptography by Christof Paar</strong></a> - University lecture series</li>
-                        <li><a href="https://www.khanacademy.org/computing/computer-science/cryptography" target="_blank" rel="noopener noreferrer"><strong>Khan Academy Cryptography</strong></a> - Basics explained well</li>
-                        <li><a href="https://www.youtube.com/user/Computerphile" target="_blank" rel="noopener noreferrer"><strong>Computerphile Cryptography Videos</strong></a> - Clear explanations of complex topics</li>
-                        <li><a href="https://www.youtube.com/channel/UClcE-kVhqyiHCcjYwcpfj9w" target="_blank" rel="noopener noreferrer"><strong>LiveOverflow's Security Videos</strong></a> - Application of cryptography in security</li>
-                    </ul>
-
-                    <h3>Interactive Learning Platforms</h3>
-                    <ul class="resource-list">
-                        <li><a href="https://www.cryptool.org/" target="_blank" rel="noopener noreferrer"><strong>CrypTool</strong></a> - Educational tools for cryptography</li>
-                        <li><a href="https://cryptohack.org/" target="_blank" rel="noopener noreferrer"><strong>Cryptohack</strong></a> - Learning platform with cryptography challenges</li>
-                        <li><a href="https://cryptopals.com/" target="_blank" rel="noopener noreferrer"><strong>CryptoPals Crypto Challenges</strong></a> - Programming challenges for cryptography</li>
-                        <li><a href="https://tryhackme.com/" target="_blank" rel="noopener noreferrer"><strong>TryHackMe Crypto Rooms</strong></a> - Applied cryptography in cybersecurity context</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h2>3D Modeling and Printing Resources</h2>
-                    
-                    <h3>Online Courses and Videos</h3>
-                    <ul class="resource-list">
-                        <li><a href="https://www.youtube.com/user/TheMakersMuse" target="_blank" rel="noopener noreferrer"><strong>Maker's Muse YouTube Channel</strong></a> - 3D printing techniques and tips</li>
-                        <li><a href="https://forums.sketchup.com/t/learning-the-basics/256510" target="_blank" rel="noopener noreferrer"><strong>Sketchup</strong></a> - Sketchup Community forums</li>
-                        <li><a href="https://www.youtube.com/channel/UC_7aK9PpYTqt08ERh1MewlQ" target="_blank" rel="noopener noreferrer"><strong>3D Printing Nerd</strong></a> - Hardware reviews and printing techniques</li>
-                        <li><a href="https://www.youtube.com/thesketchupessentials" target="_blank" rel="noopener noreferrer"><strong>Sketchup</strong></a> - Sketchup Tutorial Videos</li>
-                    </ul>
-
-                    <h3>Interactive Learning Platforms</h3>
-                    <ul class="resource-list">
-                        <li><a href="https://www.thingiverse.com/" target="_blank" rel="noopener noreferrer"><strong>Thingiverse</strong></a> - Repository of 3D models and community</li>
-                        <li><a href="https://www.printables.com/" target="_blank" rel="noopener noreferrer"><strong>Printables</strong></a> - Project repository with guides</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h2>Computer Repair and Maintenance Resources</h2>
-                    
-                    <h3>Online Courses and Videos</h3>
-                    <ul class="resource-list">
-                        <li><a href="https://www.professormesser.com/free-a-plus-training/a-plus-videos/" target="_blank" rel="noopener noreferrer"><strong>Professor Messer's CompTIA A+ Videos</strong></a> - Free comprehensive training</li>
-                        <li><a href="https://www.youtube.com/user/elithecomputerguy" target="_blank" rel="noopener noreferrer"><strong>Eli the Computer Guy</strong></a> - Practical IT and repair tutorials</li>
-                        <li><a href="https://www.youtube.com/user/LinusTechTips" target="_blank" rel="noopener noreferrer"><strong>Linus Tech Tips</strong></a> - Hardware reviews and build guides</li>
-                    </ul>
-
-                    <h3>Interactive Learning Platforms</h3>
-                    <ul class="resource-list">
-                        <li><a href="https://www.ifixit.com/Guide" target="_blank" rel="noopener noreferrer"><strong>iFixit Repair Guides</strong></a> - Detailed teardown and repair instructions</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- Lecture Materials Tab -->
-            <div id="lectures-panel" class="tab-content" role="tabpanel" aria-labelledby="tab-lectures">
-                <div class="card">
-                    <h2>Lecture Slides & Notes</h2>
-                    <a href="https://docs.google.com/presentation/d/1odu3tlAzBts3JZTm31ifpZLob9i4yTWovXAchT5IZn4/edit?usp=sharing" class="resource-link" target="_blank" rel="noopener noreferrer">
-                        <i>📝</i> Full Computer Science Slide Deck
-                        <div class="resource-meta">
-                            <span class="tag">Google Slides</span> <span class="tag">Slides</span> <span class="tag">Notes</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Tools & Software Tab -->
-            <div id="tools-panel" class="tab-content" role="tabpanel" aria-labelledby="tab-tools
+</html>
