@@ -61,8 +61,11 @@
         .banner img {
             max-width: 100%;
             height: auto;
+            object-fit: contain; /* Prevents distortion while keeping entire image visible */
             display: block;
             margin: 0 auto;
+            image-rendering: -webkit-optimize-contrast; /* Improves image crispness in some browsers */
+            image-rendering: crisp-edges;
         }
         
         nav {
