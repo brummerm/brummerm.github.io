@@ -125,78 +125,6 @@
         .card h3 {
             margin-bottom: 0.5rem;
         }
-        
-        .resources-list, .syllabus-list {
-            list-style: none;
-        }
-        
-        .resources-list li, .syllabus-list li {
-            margin-bottom: 1rem;
-            padding: 1rem;
-            background-color: white;
-            border-radius: 4px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-        
-        .resources-list a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        .resources-list a:hover {
-            text-decoration: underline;
-        }
-        
-        .resources-list p {
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
-            color: #666;
-        }
-        
-        .student-work {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .project-card {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .project-img {
-            width: 100%;
-            height: 200px;
-            background-color: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #777;
-        }
-        
-        .project-info {
-            padding: 1.5rem;
-        }
-        
-        .project-title {
-            margin-bottom: 0.5rem;
-            color: var(--secondary-color);
-        }
-        
-        .student-name {
-            color: var(--primary-color);
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-        
-        .project-desc {
-            color: #666;
-            margin-bottom: 1rem;
-        }
-        
         .btn {
             display: inline-block;
             background-color: var(--primary-color);
@@ -215,49 +143,9 @@
             padding: 0.25rem 0.5rem;
             font-size: 0.85rem;
         }
-        
-        .reset-btn {
-            background-color: #95a5a6;
-        }
-        
-        .reset-btn:hover {
-            background-color: #7f8c8d;
-        }
-        
-        .submit-btn {
-            background-color: var(--accent-color);
-        }
-        
-        .submit-btn:hover {
-            background-color: #c0392b;
-        }
-        
         .section-hidden {
             display: none;
         }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .form-group input[type="text"],
-        .form-group input[type="date"],
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-            font-family: inherit;
-        }
-        
         .form-group input[type="file"] {
             padding: 0.5rem 0;
         }
@@ -267,23 +155,6 @@
             color: #777;
             margin-top: 0.5rem;
         }
-        
-        .checkbox-group {
-            display: flex;
-            align-items: flex-start;
-        }
-        
-        .checkbox-group input {
-            margin-top: 0.3rem;
-            margin-right: 0.5rem;
-        }
-        
-        .form-actions {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
         footer {
             background-color: var(--secondary-color);
             color: white;
@@ -319,6 +190,10 @@
             max-width: 100%;
             height: auto;
             cursor: pointer; /* Shows a hand cursor when hovering over the image */
+        }
+        header, nav {
+            display: block;
+            margin-bottom: 0;
         }
         @media (max-width: 768px) {
             nav ul {

@@ -374,7 +374,20 @@
             padding-bottom: 15px;
             border-bottom: 1px solid #eee;
         }
-        
+        .banner {
+            width: 100%;
+            text-align: center;
+            background-color: var(--primary-color);
+        }
+        .banner img {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer; /* Shows a hand cursor when hovering over the image */
+        }
+        header, nav {
+            display: block;
+            margin-bottom: 0;
+        }
         @media (max-width: 768px) {
             nav ul {
                 flex-direction: column;
@@ -397,8 +410,12 @@
 </head>
 <body>
     <header>
-        <h1 class="course-title">Computer Science</h1>
-        <p class="course-subtitle">Introduction to Programming and Technology</p>
+        <div class="banner">
+            <a href="index.html">
+                <img src="brummerm.github.io/Images/banner.png" alt="Website Banner">
+                
+            </a>
+        </div>
     </header>
     
     <nav>
